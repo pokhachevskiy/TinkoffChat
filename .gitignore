@@ -3,7 +3,7 @@
 
 # Xcode
 *.xccheckout
-*.cxcscmblueprint
+*.xcscmblueprint
 xcuserdata/
 build/
 DerivedData/
