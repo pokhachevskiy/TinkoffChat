@@ -9,24 +9,6 @@
 import UIKit
 import CoreData
 
-
-func println(string : String) {
-    #if DEBUG
-    print(string)
-    #endif
-}
-
-func parseUIApplicationState (applicationState: UIApplication.State) -> String {
-    switch applicationState {
-        case .active:
-            return "active state"
-        case .background:
-            return "background state"
-        case .inactive:
-            return "inactive state"
-    }
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
