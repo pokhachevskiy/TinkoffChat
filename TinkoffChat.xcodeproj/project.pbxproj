@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A50ED4032156833A00FCE422 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50ED4022156833A00FCE422 /* Logging.swift */; };
 		A5313CCE2154CF2C00296E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5313CCD2154CF2C00296E88 /* AppDelegate.swift */; };
-		A5313CD02154CF2C00296E88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5313CCF2154CF2C00296E88 /* ViewController.swift */; };
+		A5313CD02154CF2C00296E88 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */; };
 		A5313CD32154CF2C00296E88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5313CD12154CF2C00296E88 /* Main.storyboard */; };
 		A5313CD62154CF2C00296E88 /* TinkoffChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5313CD42154CF2C00296E88 /* TinkoffChat.xcdatamodeld */; };
 		A5313CD82154CF2D00296E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5313CD72154CF2D00296E88 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		A50ED4022156833A00FCE422 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		A5313CCA2154CF2C00296E88 /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5313CCD2154CF2C00296E88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5313CCF2154CF2C00296E88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A5313CD22154CF2C00296E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5313CD52154CF2C00296E88 /* TinkoffChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffChat.xcdatamodel; sourceTree = "<group>"; };
 		A5313CD72154CF2D00296E88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				A5313CCD2154CF2C00296E88 /* AppDelegate.swift */,
-				A5313CCF2154CF2C00296E88 /* ViewController.swift */,
+				A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */,
 				A5313CD12154CF2C00296E88 /* Main.storyboard */,
 				A5313CD72154CF2D00296E88 /* Assets.xcassets */,
 				A5313CD92154CF2D00296E88 /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5313CD02154CF2C00296E88 /* ViewController.swift in Sources */,
+				A5313CD02154CF2C00296E88 /* ProfileViewController.swift in Sources */,
 				A5313CCE2154CF2C00296E88 /* AppDelegate.swift in Sources */,
 				A5313CD62154CF2C00296E88 /* TinkoffChat.xcdatamodeld in Sources */,
 				A50ED4032156833A00FCE422 /* Logging.swift in Sources */,
