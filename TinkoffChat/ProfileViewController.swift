@@ -18,7 +18,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         println(string: "\(#function)")
+        print(editButton.frame) // frame пока не известен, т.к. view на экране еще не появилась
         
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        print(editButton.frame) editButton явялется nil, т.к. в этом методе еще не подгружены outlet'ы
     }
     
     private func layerStyleInstall() {
@@ -72,7 +78,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
         self.userImage.image = image
         
@@ -88,6 +94,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         println(string: "\(#function)")
+        print(editButton.frame) // frame уже известен, т.к. view уже появилась на экране
         self.layerStyleInstall()
     }
     
