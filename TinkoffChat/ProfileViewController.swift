@@ -45,26 +45,30 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         println(string: "Выбери изображение профиля")
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        
         
         let actionSheetAlertController = UIAlertController(title: "Выбор изображения", message:
             "Выберите существующее изображение из галереи или сделайте новое", preferredStyle: .actionSheet )
         
-        actionSheetAlertController.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (action: UIAlertAction) in
+        actionSheetAlertController.addAction(UIAlertAction(title: "Камера", style: .default, handler: { [weak self] _ in
             // handling camera option
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
-            } else {
-                println(string: "Camera is not available")
+            if let strongSelf = self {
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    imagePickerController.delegate = strongSelf
+                    imagePickerController.sourceType = .camera
+                    strongSelf.present(imagePickerController, animated: true, completion: nil)
+                } else {
+                    println(string: "Camera is not available")
+                }
             }
         }))
         
-        actionSheetAlertController.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { (action: UIAlertAction) in
+        actionSheetAlertController.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { [weak self] _ in
             // handling select from gallery option
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
+            if let strongSelf = self {
+                imagePickerController.delegate = strongSelf
+                imagePickerController.sourceType = .photoLibrary
+                strongSelf.present(imagePickerController, animated: true, completion: nil)
+            }
         }))
         
         actionSheetAlertController.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
@@ -74,16 +78,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        
-        self.userImage.image = image
-        
-        picker.dismiss(animated: true, completion: nil)
-        
+        if let image = info[.originalImage] as? UIImage {
+            userImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
