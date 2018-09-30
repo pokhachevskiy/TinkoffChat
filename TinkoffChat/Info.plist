@@ -26,8 +26,6 @@
 	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Your photo will be set as profile photo.</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>You can choose photo for using as profile&apos;s one</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You can choose photo for using as profile&apos;s one</string>
 	<key>UIRequiredDeviceCapabilities</key>
