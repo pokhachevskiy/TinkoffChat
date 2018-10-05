@@ -14,6 +14,11 @@
 		A5313CD62154CF2C00296E88 /* TinkoffChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5313CD42154CF2C00296E88 /* TinkoffChat.xcdatamodeld */; };
 		A5313CD82154CF2D00296E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5313CD72154CF2D00296E88 /* Assets.xcassets */; };
 		A5313CDB2154CF2D00296E88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5313CD92154CF2D00296E88 /* LaunchScreen.storyboard */; };
+		A53A7BF1216548BB00BC41FC /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A7BF0216548BB00BC41FC /* ConversationsListViewController.swift */; };
+		A53A7BF321654D0D00BC41FC /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A7BF221654D0D00BC41FC /* ConversationCell.swift */; };
+		A5828B052167B0F90048E3D0 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828B042167B0F90048E3D0 /* IncomingMessageCell.swift */; };
+		A5828B072167B15D0048E3D0 /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828B062167B15D0048E3D0 /* ConversationTableViewController.swift */; };
+		A5828B092167B1FC0048E3D0 /* OutcomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828B082167B1FC0048E3D0 /* OutcomingMessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		A5313CD72154CF2D00296E88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5313CDA2154CF2D00296E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5313CDC2154CF2D00296E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A53A7BF0216548BB00BC41FC /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
+		A53A7BF221654D0D00BC41FC /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		A5828B042167B0F90048E3D0 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
+		A5828B062167B15D0048E3D0 /* ConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
+		A5828B082167B1FC0048E3D0 /* OutcomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomingMessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 			children = (
 				A5313CCD2154CF2C00296E88 /* AppDelegate.swift */,
 				A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */,
+				A53A7BF0216548BB00BC41FC /* ConversationsListViewController.swift */,
+				A5828B062167B15D0048E3D0 /* ConversationTableViewController.swift */,
+				A53A7BF221654D0D00BC41FC /* ConversationCell.swift */,
+				A5828B042167B0F90048E3D0 /* IncomingMessageCell.swift */,
+				A5828B082167B1FC0048E3D0 /* OutcomingMessageCell.swift */,
 				A5313CD12154CF2C00296E88 /* Main.storyboard */,
 				A5313CD72154CF2D00296E88 /* Assets.xcassets */,
 				A5313CD92154CF2D00296E88 /* LaunchScreen.storyboard */,
@@ -142,7 +157,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5313CD02154CF2C00296E88 /* ProfileViewController.swift in Sources */,
+				A53A7BF1216548BB00BC41FC /* ConversationsListViewController.swift in Sources */,
+				A5828B072167B15D0048E3D0 /* ConversationTableViewController.swift in Sources */,
+				A53A7BF321654D0D00BC41FC /* ConversationCell.swift in Sources */,
 				A5313CCE2154CF2C00296E88 /* AppDelegate.swift in Sources */,
+				A5828B052167B0F90048E3D0 /* IncomingMessageCell.swift in Sources */,
+				A5828B092167B1FC0048E3D0 /* OutcomingMessageCell.swift in Sources */,
 				A5313CD62154CF2C00296E88 /* TinkoffChat.xcdatamodeld in Sources */,
 				A50ED4032156833A00FCE422 /* Logging.swift in Sources */,
 			);
