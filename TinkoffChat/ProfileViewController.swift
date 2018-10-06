@@ -22,11 +22,19 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
     }
     
+    func loadData(with: CGRect) {
+        self.view.frame = with
+         layerStyleInstall()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        print(editButton.frame) editButton явялется nil, т.к. в этом методе еще не подгружены outlet'ы
     }
     
+    @IBAction func tapDone(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     private func layerStyleInstall() {
         let spacing = CGFloat(10)
         

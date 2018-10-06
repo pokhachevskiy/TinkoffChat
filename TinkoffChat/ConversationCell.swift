@@ -8,41 +8,41 @@
 
 import UIKit
 
+protocol ConversationCellConfiguration: class {
+    var name: String? {get set}
+    var message: String? {get set}
+    var date: Date? {get set}
+    var online: Bool {get set}
+    var hasUnreadMessage: Bool {get set}
+}
+
 class ConversationCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var textMessage: UILabel!
     
     var name: String?{
-        get{
-            return nameLabel.text
-        }
-        set {
-            if let strongName = newValue {
+        didSet {
+            if let strongName = name {
                 nameLabel?.text = strongName
+            } else {
+                nameLabel?.text = "Unknown"
             }
         }
     }
     var message: String?{
-        get {
-            return textMessage.text
-        }
-        set {
-            if let strongTextMessage = newValue {
+        didSet {
+            if let strongTextMessage = message {
                 self.textMessage.text = strongTextMessage
             } else {
                 self.textMessage.text = "No messages yet"
-                print(UIFont.italicSystemFont(ofSize: 20))
-                self.textMessage.font = UIFont.italicSystemFont(ofSize: 20)
+                self.textMessage.font = UIFont.italicSystemFont(ofSize: self.textMessage.font.pointSize)
             }
         }
     }
     var date: Date? {
-        get {
-            return Date()
-        }
-        set {
-            if let strongDate = newValue {
+        didSet {
+            if let strongDate = date {
                 let calendar = Calendar.current
                 if calendar.isDateInToday(strongDate) {
                     // today case
@@ -57,24 +57,21 @@ class ConversationCell: UITableViewCell {
             }
         }
     }
-    var online: Bool{
-        get{
-            return self.backgroundColor == UIColor(rgb: 0xffffe5)
-        }
-        set{
-            if newValue {
+    var online: Bool = false{
+        didSet{
+            if online {
                 self.backgroundColor = UIColor(rgb: 0xffffe5)
             } else {
                 self.backgroundColor = UIColor(named: "white")
             }
         }
     }
-    var hasUnreadMessage: Bool{
-        get{
-            return self.textMessage.font == UIFont.boldSystemFont(ofSize: textMessage.font.pointSize)
-        }
-        set{
-            if newValue{
+    var hasUnreadMessage: Bool = false{
+        didSet{
+            if message == nil {
+                return
+            }
+            if hasUnreadMessage {
                 self.textMessage.font = UIFont.boldSystemFont(ofSize: textMessage.font.pointSize)
             } else {
                 self.textMessage.font = UIFont.systemFont(ofSize: textMessage.font.pointSize)

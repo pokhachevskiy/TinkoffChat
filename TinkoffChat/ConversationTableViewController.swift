@@ -9,10 +9,13 @@
 import UIKit
 
 class ConversationTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.separatorStyle = .none
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 44
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,13 +32,15 @@ class ConversationTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 4
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IncomingMessageCell", for: indexPath)
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "IncomingMessageCell", for: indexPath)
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "OutcomingMessageCell", for: indexPath)
+
+        let cell = (indexPath.row % 2 == 0) ? cell1 : cell2
         // Configure the cell...
 
         return cell
@@ -69,6 +74,9 @@ class ConversationTableViewController: UITableViewController {
     }
     */
 
+    func loadData(with: ConversationCell) {
+        self.title = with.name
+    }
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -77,7 +85,7 @@ class ConversationTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,6 +93,6 @@ class ConversationTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }

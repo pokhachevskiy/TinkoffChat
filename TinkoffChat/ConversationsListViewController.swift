@@ -126,14 +126,29 @@ class ConversationsListViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.identifier {
+        case "toConversation":
+            if let cell = sender as? ConversationCell,
+                let conversationViewController = segue.destination as? ConversationTableViewController {
+                conversationViewController.loadData(with: cell)
+            }
+        case "toProfile":
+                if let navigationController = segue.destination as? UINavigationController,
+                    let profileViewController = navigationController.topViewController as? ProfileViewController{
+                profileViewController.loadData(with: self.view!.frame)
+            }
+            
+        default:
+            return
+        }
     }
-    */
+ 
 
 }
