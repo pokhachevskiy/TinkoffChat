@@ -35,6 +35,23 @@ class MessageClass: NSObject {
         self.hasUnreadMessage = phasUnreadMessage
         
     }
+    
+    init(pdate: Date, ponline: Bool, phasUnreadMessage: Bool)
+    {
+        self.date = pdate
+        self.online = ponline
+        self.hasUnreadMessage = phasUnreadMessage
+        
+    }
+    
+    init(pmessage: String, pdate: Date, ponline: Bool, phasUnreadMessage: Bool)
+    {
+        self.date = pdate
+        self.message = pmessage
+        self.online = ponline
+        self.hasUnreadMessage = phasUnreadMessage
+        
+    }
 }
 
 
@@ -108,6 +125,11 @@ class ConversationsListViewController: UITableViewController {
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "Vsevolod Pokhachevskiy", pdate: Date(), ponline: true, phasUnreadMessage: false))
         let someOldDate = Date(timeIntervalSinceReferenceDate: 542412351)
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "Evgeniy Pelevin",  pmessage: "ut labore et dolore magna ", pdate: someOldDate, ponline: true, phasUnreadMessage: false))
+        
+        arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "", pdate: Date(), ponline: true, phasUnreadMessage: true))
+        arrayOfCellsWithMessagesOnline.append(MessageClass(pdate: Date(), ponline: true, phasUnreadMessage: true))
+        arrayOfCellsWithMessagesOnline.append(MessageClass(pmessage: "eam cu persecuti intellegebat", pdate: Date(), ponline: true, phasUnreadMessage: true))
+        
         let anotherOldDate = Date(timeIntervalSinceReferenceDate: 542325951)
         
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "Karina Zaynullina", pmessage: "i have seen it!", pdate: Date(), ponline: false, phasUnreadMessage: true))
@@ -120,6 +142,9 @@ class ConversationsListViewController: UITableViewController {
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "Abdul Barclay", pmessage: "et dico iracundia vix", pdate: Date(), ponline: false, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "Kelan Morrison", pmessage: "Sale primis quo no", pdate: Date(), ponline: false, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "Rehaan Larson", pmessage: "eam cu persecuti intellegebat", pdate: Date(), ponline: false, phasUnreadMessage: false))
+        arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "", pdate: Date(), ponline: false, phasUnreadMessage: true))
+        arrayOfCellsWithMessagesOffline.append(MessageClass(pdate: Date(), ponline: false, phasUnreadMessage: true))
+        arrayOfCellsWithMessagesOffline.append(MessageClass(pmessage: "eam cu persecuti intellegebat", pdate: Date(), ponline: false, phasUnreadMessage: true))
         
         
 //        tableView.reloadData()
