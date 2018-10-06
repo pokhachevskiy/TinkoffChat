@@ -8,8 +8,21 @@
 
 import UIKit
 
+protocol MessageCellConfiguration: class{
+    var textMessage: String? {get set}
+}
+
 class MessageCell: UITableViewCell {
 
+    var textMessage: String? {
+        didSet{
+            if let strongTextMessage = textMessage {
+                textMessageLabel?.text = strongTextMessage
+            } else {
+                textMessageLabel?.text = ""
+            }
+        }
+    }
     
     @IBOutlet private var textMessageLabel: UILabel!
     private func layerStyleInstall() {
