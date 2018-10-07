@@ -164,12 +164,6 @@ class ConversationsListViewController: UITableViewController {
                 let conversationViewController = segue.destination as? ConversationTableViewController {
                 conversationViewController.loadData(with: cell)
             }
-        case "toProfile":
-                if let navigationController = segue.destination as? UINavigationController,
-                    let profileViewController = navigationController.topViewController as? ProfileViewController{
-                profileViewController.loadData(with: self.view!.frame)
-            }
-            
         default:
             return
         }
