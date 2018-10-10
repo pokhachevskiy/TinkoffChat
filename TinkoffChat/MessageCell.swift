@@ -12,7 +12,7 @@ protocol MessageCellConfiguration: class{
     var textMessage: String? {get set}
 }
 
-class MessageCell: UITableViewCell {
+class MessageCell: UITableViewCell, MessageCellConfiguration {
 
     var textMessage: String? {
         didSet{
@@ -25,19 +25,8 @@ class MessageCell: UITableViewCell {
     }
     
     @IBOutlet private var textMessageLabel: UILabel!
-    private func layerStyleInstall() {
-//        self.contentView.
-//        self.contentView.backgroundColor = UIColor.black
-//        self.contentView.clipsToBounds = true
-//        self.contentView.layer.cornerRadius = self.contentView.bounds.size.height/3.0
-//        self.layer.cornerRadius = self.layer.bounds.size.height/3.0
-//        self.contentView.clipsToBounds = true
-        
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        layerStyleInstall()
         // Initialization code
     }
 

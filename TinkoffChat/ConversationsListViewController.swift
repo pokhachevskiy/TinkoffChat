@@ -112,10 +112,7 @@ class ConversationsListViewController: UITableViewController {
         return 2
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func fulfillOnlineArray() {
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "Daniil Pokhachevskiy", pmessage: "got it.", pdate: Date(), ponline: true, phasUnreadMessage: false))
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "Alexey Piskunov", pmessage: "txt(debug:online,no unread)", pdate: Date(), ponline: true, phasUnreadMessage: false))
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "Filipp Firsov", pmessage: "txt(debug:online,has unread)", pdate: Date(), ponline: true, phasUnreadMessage: true))
@@ -129,7 +126,10 @@ class ConversationsListViewController: UITableViewController {
         arrayOfCellsWithMessagesOnline.append(MessageClass(pname: "", pdate: Date(), ponline: true, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOnline.append(MessageClass(pdate: Date(), ponline: true, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOnline.append(MessageClass(pmessage: "eam cu persecuti intellegebat", pdate: Date(), ponline: true, phasUnreadMessage: true))
-        
+    }
+    
+    func fulfillOfflineArray() {
+        let someOldDate = Date(timeIntervalSinceReferenceDate: 542412351)
         let anotherOldDate = Date(timeIntervalSinceReferenceDate: 542325951)
         
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "Karina Zaynullina", pmessage: "i have seen it!", pdate: Date(), ponline: false, phasUnreadMessage: true))
@@ -145,10 +145,12 @@ class ConversationsListViewController: UITableViewController {
         arrayOfCellsWithMessagesOffline.append(MessageClass(pname: "", pdate: Date(), ponline: false, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOffline.append(MessageClass(pdate: Date(), ponline: false, phasUnreadMessage: true))
         arrayOfCellsWithMessagesOffline.append(MessageClass(pmessage: "eam cu persecuti intellegebat", pdate: Date(), ponline: false, phasUnreadMessage: true))
-        
-        
-//        tableView.reloadData()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fulfillOnlineArray()
+        fulfillOfflineArray()
     }
 
     

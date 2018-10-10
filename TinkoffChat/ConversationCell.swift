@@ -16,7 +16,7 @@ protocol ConversationCellConfiguration: class {
     var hasUnreadMessage: Bool {get set}
 }
 
-class ConversationCell: UITableViewCell {
+class ConversationCell: UITableViewCell, ConversationCellConfiguration {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var textMessage: UILabel!
