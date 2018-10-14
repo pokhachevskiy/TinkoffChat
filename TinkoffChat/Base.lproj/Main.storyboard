@@ -91,6 +91,81 @@
             </objects>
             <point key="canvasLocation" x="3761.25" y="242.95774647887325"/>
         </scene>
+        <!--Themes View Controller Swift-->
+        <scene sceneID="pwB-zk-0uI">
+            <objects>
+                <viewController id="yda-IX-z1c" customClass="ThemesViewControllerSwift" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Efo-T1-7NT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy7-vI-BD9">
+                                <rect key="frame" x="80" y="269" width="160" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.8784313725490196" blue="0.078431372549019607" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Темная"/>
+                                <connections>
+                                    <action selector="themeButtonPressed:" destination="yda-IX-z1c" eventType="touchUpInside" id="o7G-pZ-3XC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-Vh-3Vv">
+                                <rect key="frame" x="80" y="329" width="160" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.8784313725490196" blue="0.078431372549019607" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Шампань"/>
+                                <connections>
+                                    <action selector="themeButtonPressed:" destination="yda-IX-z1c" eventType="touchUpInside" id="o6G-fJ-Hiv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-9r-lLn">
+                                <rect key="frame" x="80" y="209" width="160" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.8784313725490196" blue="0.078431372549019607" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Светлая"/>
+                                <connections>
+                                    <action selector="themeButtonPressed:" destination="yda-IX-z1c" eventType="touchUpInside" id="YIq-ty-cxv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0wC-VN-pZc" firstAttribute="trailing" secondItem="DbT-9r-lLn" secondAttribute="trailing" constant="80" id="4sM-nO-L9p"/>
+                            <constraint firstItem="1dG-Vh-3Vv" firstAttribute="top" secondItem="jy7-vI-BD9" secondAttribute="bottom" constant="30" id="Bl2-1F-g6N"/>
+                            <constraint firstItem="jy7-vI-BD9" firstAttribute="top" secondItem="DbT-9r-lLn" secondAttribute="bottom" constant="30" id="O9Q-nd-gvV"/>
+                            <constraint firstItem="0wC-VN-pZc" firstAttribute="trailing" secondItem="jy7-vI-BD9" secondAttribute="trailing" constant="80" id="Qcr-oh-sjh"/>
+                            <constraint firstItem="DbT-9r-lLn" firstAttribute="leading" secondItem="0wC-VN-pZc" secondAttribute="leading" constant="80" id="XdV-sU-0kO"/>
+                            <constraint firstItem="jy7-vI-BD9" firstAttribute="leading" secondItem="0wC-VN-pZc" secondAttribute="leading" constant="80" id="nc6-JU-xi4"/>
+                            <constraint firstItem="0wC-VN-pZc" firstAttribute="trailing" secondItem="1dG-Vh-3Vv" secondAttribute="trailing" constant="80" id="ron-Rp-Rva"/>
+                            <constraint firstItem="jy7-vI-BD9" firstAttribute="centerY" secondItem="Efo-T1-7NT" secondAttribute="centerY" id="vWp-V6-nAr"/>
+                            <constraint firstItem="1dG-Vh-3Vv" firstAttribute="leading" secondItem="0wC-VN-pZc" secondAttribute="leading" constant="80" id="xfu-wi-PDw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0wC-VN-pZc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mq5-He-81c">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="rO0-C3-IQP">
+                            <connections>
+                                <action selector="doneTapped:" destination="yda-IX-z1c" id="VCa-2z-Tem"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcP-cN-cAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2535" y="1061.6197183098591"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5WS-d5-yvj">
+            <objects>
+                <navigationController id="W74-qd-Mmy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NMH-gx-hM4">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yda-IX-z1c" kind="relationship" relationship="rootViewController" id="VSp-po-6fa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wSh-fy-C8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="659"/>
+        </scene>
         <!--ConversationViewController-->
         <scene sceneID="JHx-0g-oie">
             <objects>
@@ -238,6 +313,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="vDy-Eg-Wgx" userLabel="ConversationsListViewController">
+                        <barButtonItem key="leftBarButtonItem" title="Темы" id="rnd-Uu-LWC">
+                            <connections>
+                                <segue destination="W74-qd-Mmy" kind="presentation" identifier="toThemes" id="qHg-0Y-b9z"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Профиль" id="MQS-Ez-Mle">
                             <connections>
                                 <segue destination="gqs-vn-cdW" kind="presentation" identifier="toProfile" id="VIr-Sp-nie"/>
@@ -281,7 +361,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3A0-FH-meo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2763.75" y="242.95774647887325"/>
+            <point key="canvasLocation" x="2951" y="395"/>
         </scene>
     </scenes>
     <resources>

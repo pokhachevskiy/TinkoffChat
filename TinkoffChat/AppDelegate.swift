@@ -19,9 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         currentApplicationState = UIApplication.shared.applicationState
         println(string : "Application moved from \(parseUIApplicationState(applicationState: previousApplicationState)) to \(parseUIApplicationState(applicationState: currentApplicationState)): \(#function)")
         previousApplicationState = currentApplicationState
+        
+        UINavigationBar.appearance().tintColor = UIColor.black
+        if let color = UserDefaults.standard.colorForKey(key: "Theme") {
+            UINavigationBar.appearance().barTintColor = color
+            UINavigationBar.appearance().backgroundColor = color
+        }
         // Override point for customization after application launch.
         return true
     }
@@ -109,3 +116,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UserDefaults {
+    
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+        }
+        set(colorData, forKey: key)
+    }
+    
+    func colorForKey(key: String) -> UIColor? {
+        var color: UIColor?
+        if let colorData = data(forKey: key) {
+            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        }
+        return color
+    }
+    
+}

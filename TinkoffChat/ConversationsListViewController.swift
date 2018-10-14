@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MessageClass: NSObject {
     var name: String?
     var message: String?
@@ -153,6 +152,18 @@ class ConversationsListViewController: UITableViewController {
         fulfillOfflineArray()
     }
 
+    func logThemeChanging (selectedTheme: UIColor){
+        print(#function, selectedTheme)
+        UINavigationBar.appearance().barTintColor = selectedTheme
+        UserDefaults.standard.setColor(color: selectedTheme, forKey: "Theme")
+    }
+    
+    func logThemeChangingSwift (selectedTheme: ThemesStructureSwift.Theme){
+        print(#function, selectedTheme)
+        UINavigationBar.appearance().barTintColor = selectedTheme.navigationBarColor
+        UserDefaults.standard.setColor(color: selectedTheme.navigationBarColor, forKey: "Theme")
+    }
+    
     
     // MARK: - Navigation
 
@@ -166,10 +177,26 @@ class ConversationsListViewController: UITableViewController {
                 let conversationViewController = segue.destination as? ConversationTableViewController {
                 conversationViewController.loadData(with: cell)
             }
+        case "toThemes":
+            let navigationViewController = segue.destination as! UINavigationController
+            
+            if let themesViewController = navigationViewController.topViewController as? ThemesViewController {
+                themesViewController.delegate = self
+            } else if let themesViewControllerSwift = navigationViewController.topViewController as? ThemesViewControllerSwift {
+                themesViewControllerSwift.closure = { logThemeChangingSwift }()
+            }
         default:
             return
         }
     }
  
 
+}
+
+extension ConversationsListViewController : ​ThemesViewControllerDelegate {
+    func themesViewController(_ controller: ThemesViewController, didSelectTheme selectedTheme: UIColor) {
+        self.logThemeChanging(selectedTheme: selectedTheme)
+    }
+    
+    
 }
