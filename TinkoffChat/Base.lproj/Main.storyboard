@@ -18,39 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tja-mN-6Eh">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user" translatesAutoresizingMaskIntoConstraints="NO" id="GMH-jL-6m3">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="288"/>
-                                        <color key="backgroundColor" red="0.63445919206983614" green="1" blue="0.06412877093347813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="GMH-jL-6m3" secondAttribute="height" multiplier="1:1" id="8IH-lL-aJe"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Daniil Pokhachevskiy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-y7-7JU" userLabel="LabelTitle">
-                                        <rect key="frame" x="0.0" y="304" width="288" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9B-Mk-VPO" userLabel="LabelInfo">
-                                        <rect key="frame" x="0.0" y="347.5" width="288" height="78.5"/>
-                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrZ-22-BCE" userLabel="EditButton">
-                                        <rect key="frame" x="0.0" y="442" width="288" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Редактировать">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KE1-YF-Ab4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user" translatesAutoresizingMaskIntoConstraints="NO" id="GMH-jL-6m3">
+                                <rect key="frame" x="16" y="80" width="288" height="288"/>
+                                <color key="backgroundColor" red="0.63445919206983614" green="1" blue="0.06412877093347813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GMH-jL-6m3" secondAttribute="height" multiplier="1:1" id="8IH-lL-aJe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" text="Daniil Pokhachevskiy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-y7-7JU" userLabel="LabelTitle">
+                                <rect key="frame" x="16" y="384" width="288" height="27.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9B-Mk-VPO" userLabel="LabelInfo">
+                                <rect key="frame" x="16" y="421.5" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrZ-22-BCE" userLabel="EditButton">
+                                <rect key="frame" x="16" y="522" width="288" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Редактировать">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gph-Ic-GuT"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KE1-YF-Ab4">
                                 <rect key="frame" x="254" y="318" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.24705882352941178" green="0.47058823529411764" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -62,15 +59,75 @@
                                     <action selector="addPictureButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6po-B1-JeH"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqd-aC-NzJ">
+                                <rect key="frame" x="16" y="522" width="136" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.87843137250000003" blue="0.078431372550000003" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="GCD"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiy-A4-d1k"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eow-RB-wZm">
+                                <rect key="frame" x="168" y="522" width="136" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.87843137250000003" blue="0.078431372550000003" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Operation"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvK-L6-pPL"/>
+                                </connections>
+                            </button>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Surname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-vT-3jK" userLabel="NameTextField">
+                                <rect key="frame" x="16" y="384" width="288" height="27.5"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEdited:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="2Tn-yF-2wj"/>
+                                </connections>
+                            </textField>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-bf-atz" userLabel="InfoTextField">
+                                <rect key="frame" x="16" y="421.5" width="288" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEdited:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="SFn-O8-Qjj"/>
+                                </connections>
+                            </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wMY-Eh-1bP">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tja-mN-6Eh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="6F1-4g-VZX"/>
-                            <constraint firstItem="tja-mN-6Eh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GK7-zE-H3H"/>
-                            <constraint firstAttribute="trailing" secondItem="tja-mN-6Eh" secondAttribute="trailing" constant="16" id="ROy-SA-ZFm"/>
-                            <constraint firstItem="KE1-YF-Ab4" firstAttribute="trailing" secondItem="GMH-jL-6m3" secondAttribute="trailing" priority="900" id="Rc3-mH-T8y"/>
-                            <constraint firstItem="KE1-YF-Ab4" firstAttribute="bottom" secondItem="GMH-jL-6m3" secondAttribute="bottom" priority="900" id="bk8-CN-R5m"/>
-                            <constraint firstAttribute="bottom" secondItem="tja-mN-6Eh" secondAttribute="bottom" constant="16" id="jd9-2Z-yxw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LrZ-22-BCE" secondAttribute="bottom" constant="16" id="1TT-us-IUI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pqd-aC-NzJ" secondAttribute="bottom" constant="16" id="3xo-8x-pZv"/>
+                            <constraint firstItem="KE1-YF-Ab4" firstAttribute="trailing" secondItem="GMH-jL-6m3" secondAttribute="trailing" id="Btr-W3-HFl"/>
+                            <constraint firstItem="A9B-Mk-VPO" firstAttribute="top" secondItem="Plc-vT-3jK" secondAttribute="bottom" constant="10" id="EU7-jo-Ku4"/>
+                            <constraint firstItem="Plc-vT-3jK" firstAttribute="top" secondItem="GMH-jL-6m3" secondAttribute="bottom" constant="16" id="H0l-rx-vpa"/>
+                            <constraint firstItem="KE1-YF-Ab4" firstAttribute="bottom" secondItem="GMH-jL-6m3" secondAttribute="bottom" id="H78-6Q-bkI"/>
+                            <constraint firstItem="eow-RB-wZm" firstAttribute="leading" secondItem="pqd-aC-NzJ" secondAttribute="trailing" constant="16" id="HyE-Bi-0DO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GMH-jL-6m3" secondAttribute="trailing" constant="16" id="N75-4B-g1F"/>
+                            <constraint firstItem="Ue6-y7-7JU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NN8-6u-7qZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eow-RB-wZm" secondAttribute="trailing" constant="16" id="QZK-1h-OkR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LrZ-22-BCE" secondAttribute="trailing" constant="16" id="RQf-Ld-2Lr"/>
+                            <constraint firstItem="Ue6-y7-7JU" firstAttribute="top" secondItem="GMH-jL-6m3" secondAttribute="bottom" constant="16" id="RZa-Uz-Oyh"/>
+                            <constraint firstItem="pqd-aC-NzJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Rsw-0q-Sm2"/>
+                            <constraint firstItem="pqd-aC-NzJ" firstAttribute="width" secondItem="eow-RB-wZm" secondAttribute="width" id="XDi-18-PXm"/>
+                            <constraint firstItem="Plc-vT-3jK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XGx-DO-UPJ"/>
+                            <constraint firstItem="wMY-Eh-1bP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aeY-Hn-J7v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A9B-Mk-VPO" secondAttribute="trailing" constant="16" id="c9X-9B-svy"/>
+                            <constraint firstItem="GMH-jL-6m3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cVk-bq-TDA"/>
+                            <constraint firstItem="dcd-bf-atz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ccG-yq-aaI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Plc-vT-3jK" secondAttribute="trailing" constant="16" id="cuP-Zk-hyJ"/>
+                            <constraint firstItem="GMH-jL-6m3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="dw4-uG-q9U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dcd-bf-atz" secondAttribute="trailing" constant="16" id="iNo-Ii-BFY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ue6-y7-7JU" secondAttribute="trailing" constant="16" id="kVU-a4-ziM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eow-RB-wZm" secondAttribute="bottom" constant="16" id="pJE-yC-w87"/>
+                            <constraint firstItem="A9B-Mk-VPO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pfC-3t-GFe"/>
+                            <constraint firstItem="LrZ-22-BCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qzC-V9-ZFF"/>
+                            <constraint firstItem="A9B-Mk-VPO" firstAttribute="top" secondItem="Ue6-y7-7JU" secondAttribute="bottom" constant="10" id="urd-22-EGI"/>
+                            <constraint firstItem="wMY-Eh-1bP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vcN-T1-Bxc"/>
+                            <constraint firstItem="dcd-bf-atz" firstAttribute="top" secondItem="Plc-vT-3jK" secondAttribute="bottom" constant="10" id="yih-Zk-Xf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -82,8 +139,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="wMY-Eh-1bP" id="HlC-SH-RQL"/>
                         <outlet property="addPictureButton" destination="KE1-YF-Ab4" id="atk-lW-HzH"/>
                         <outlet property="editButton" destination="LrZ-22-BCE" id="Bca-fL-rEV"/>
+                        <outlet property="gcdButton" destination="pqd-aC-NzJ" id="ElB-YX-J8b"/>
+                        <outlet property="infoTextField" destination="dcd-bf-atz" id="Vn7-TX-Rpb"/>
+                        <outlet property="nameTextField" destination="Plc-vT-3jK" id="qFo-kP-srl"/>
+                        <outlet property="operationButton" destination="eow-RB-wZm" id="nf2-UN-3O3"/>
                         <outlet property="userImage" destination="GMH-jL-6m3" id="4wj-Pc-4n6"/>
                     </connections>
                 </viewController>

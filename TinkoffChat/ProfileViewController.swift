@@ -14,6 +14,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var addPictureButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var operationButton: UIButton!
+    @IBOutlet weak var gcdButton: UIButton!
+    @IBOutlet weak var infoTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var fileUrl: URL = URL(fileURLWithPath: "./image")
+    var dataManager: DataManagerProtocol? = GCDDataManager(fileURL: self.fileUrl)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +36,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 //        print(editButton.frame) editButton явялется nil, т.к. в этом методе еще не подгружены outlet'ы
     }
     
+    @IBAction func editButtonPressed(_ sender: Any) {
+        setEditing(true, animated: true)
+    }
     @IBAction func tapDone(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    
     private func layerStyleInstall() {
         let spacing = CGFloat(10)
         
@@ -42,6 +57,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.editButton.layer.cornerRadius = self.editButton.frame.size.height/3.0
         self.editButton.layer.borderWidth = CGFloat(1)
         self.editButton.layer.borderColor = UIColor.black.cgColor
+        
+        self.activityIndicator.hidesWhenStopped = true
     }
     
     @IBAction func addPictureButtonPressed(_ sender: UIButton) {
@@ -95,6 +112,63 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewWillAppear(animated)
         println(string: "\(#function)")
     }
+    
+    
+    @IBAction func textFieldEdited(_ sender: UITextField) {
+        
+        gcdButton.isEnabled = true
+        operationButton.isEnabled = true
+        
+        switch sender {
+        case nameTextField:
+            print("name changed")
+        case infoTextField:
+            print("info changed")
+        default:
+            print("default")
+        }
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        self.activityIndicator.startAnimating()
+        
+        switch sender.titleLabel!.text{
+        case "GCD":
+            print("GCD")
+            print("yes")
+//            self.activityIndicator.stopAnimating()
+        case "Operation":
+            print("operation")
+        default:
+            print("error")
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        print("Editing!")
+        self.editButton.isHidden = true
+        if (self.isEditing) {
+            
+            addPictureButton.isHidden = false
+            
+            gcdButton.isHidden = false
+            gcdButton.isEnabled = false
+            
+            operationButton.isHidden = false
+            operationButton.isEnabled = false
+            
+            nameTextField.isHidden = false
+            
+            infoTextField.isHidden = false
+            
+        } else {
+            // we're not in edit mode
+            let newButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
+            navigationItem.leftBarButtonItem = newButton
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -38,7 +38,6 @@
     }
 }
 
-
 - (void)setModel:(Themes *)model {
     if (_model != model) {
         [_model release];
