@@ -28,6 +28,8 @@
 	<string>Your photo will be set as profile photo.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You can choose photo for using as profile&apos;s one</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Use your storage for saving photo</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

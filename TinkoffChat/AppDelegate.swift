@@ -13,13 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
     var currentApplicationState: UIApplication.State = UIApplication.shared.applicationState
     var previousApplicationState: UIApplication.State = UIApplication.shared.applicationState
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         currentApplicationState = UIApplication.shared.applicationState
         println(string : "Application moved from \(parseUIApplicationState(applicationState: previousApplicationState)) to \(parseUIApplicationState(applicationState: currentApplicationState)): \(#function)")
         previousApplicationState = currentApplicationState

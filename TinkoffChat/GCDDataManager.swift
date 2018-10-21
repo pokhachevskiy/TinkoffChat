@@ -10,38 +10,27 @@ import UIKit
 import Foundation
 
 class GCDDataManager : DataManagerProtocol{
-    let queue = DispatchQueue.global(qos: .userInteractive)
-    private var fileURL: URL = URL(fileURLWithPath: "")
     
-    init(fileURL: URL) {
-        queue.async(flags: .barrier) {
-            self.fileURL = fileURL
-        }
-    }
-    func saveImageToFile(imageData: Data, completion: @escaping (_ success: Bool) -> ()){
-        var success = true;
-        queue.async(flags: .barrier) {
-            do {
-                _ = try imageData.write(to: self.fileURL)
-            } catch let error {
-                success = false;
-                print(error)
-            }
+    let profileHandler: ProfileHandler = ProfileHandler()
+    let queue = DispatchQueue.global(qos: .userInteractive)
+    
+    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ()) {
+        queue.async {
+            let saveSucceeded = self.profileHandler.saveData(profile: profile)
+            
             DispatchQueue.main.async {
-                completion(success)
+                completion(saveSucceeded)
             }
         }
-        
-        
     }
-    func loadImageFromFile(completion: @escaping (_ result: Data?) -> ()) {
-        var result : Data?
-        queue.sync {
-            result = try? Data(contentsOf: self.fileURL)
+    
+    func loadData(completion: @escaping (_ profile: Profile?) -> ()) {
+        queue.async {
+            let retrievedProfile = self.profileHandler.loadData()
+            
+            DispatchQueue.main.async {
+                completion(retrievedProfile)
+            }
         }
-        DispatchQueue.main.async {
-            completion(result)
-        }
-        
     }
 }

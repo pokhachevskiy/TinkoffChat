@@ -9,6 +9,6 @@
 import Foundation
 
 protocol DataManagerProtocol {
-    func saveImageToFile(imageData: Data, completion: @escaping (_ success: Bool) -> ())
-    func loadImageFromFile(completion: @escaping (_ result: Data?) -> ())
+    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ())
+    func loadData(completion: @escaping (_ profile: Profile?) -> ())
 }

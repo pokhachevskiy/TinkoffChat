@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6740D9DC217B9EFC004270D3 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D9DB217B9EFC004270D3 /* OperationDataManager.swift */; };
+		679FB919217C9FD800F8FFDB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FB918217C9FD800F8FFDB /* Profile.swift */; };
+		679FB91B217CA7C100F8FFDB /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679FB91A217CA7C100F8FFDB /* Operations.swift */; };
 		A50ED4032156833A00FCE422 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50ED4022156833A00FCE422 /* Logging.swift */; };
 		A5313CCE2154CF2C00296E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5313CCD2154CF2C00296E88 /* AppDelegate.swift */; };
 		A5313CD02154CF2C00296E88 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6740D9DB217B9EFC004270D3 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
+		679FB918217C9FD800F8FFDB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		679FB91A217CA7C100F8FFDB /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		A50ED4022156833A00FCE422 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		A5313CCA2154CF2C00296E88 /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5313CCD2154CF2C00296E88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +107,9 @@
 				A56797352170CAC6006ADF36 /* Themes.m */,
 				A567EC12217A498500FAE972 /* GCDDataManager.swift */,
 				A567EC16217B27B700FAE972 /* DataManagerProtocol.swift */,
+				6740D9DB217B9EFC004270D3 /* OperationDataManager.swift */,
+				679FB918217C9FD800F8FFDB /* Profile.swift */,
+				679FB91A217CA7C100F8FFDB /* Operations.swift */,
 			);
 			path = TinkoffChat;
 			sourceTree = "<group>";
@@ -195,8 +204,11 @@
 				A567EC13217A498500FAE972 /* GCDDataManager.swift in Sources */,
 				A5313CCE2154CF2C00296E88 /* AppDelegate.swift in Sources */,
 				A5EF394A2172791700777113 /* ThemesViewControllerSwift.swift in Sources */,
+				679FB91B217CA7C100F8FFDB /* Operations.swift in Sources */,
+				679FB919217C9FD800F8FFDB /* Profile.swift in Sources */,
 				A5828B052167B0F90048E3D0 /* MessageCell.swift in Sources */,
 				A56797362170CAC6006ADF36 /* Themes.m in Sources */,
+				6740D9DC217B9EFC004270D3 /* OperationDataManager.swift in Sources */,
 				A5EF394C21732BC800777113 /* ThemesStructureSwift.swift in Sources */,
 				A5313CD62154CF2C00296E88 /* TinkoffChat.xcdatamodeld in Sources */,
 				A50ED4032156833A00FCE422 /* Logging.swift in Sources */,

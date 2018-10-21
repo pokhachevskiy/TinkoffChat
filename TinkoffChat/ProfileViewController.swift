@@ -7,6 +7,7 @@
 //
 
 import UIKit
+var fileUrl: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -19,30 +20,98 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var infoTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
-    private var fileUrl: URL = URL(fileURLWithPath: "./image")
-    var dataManager: DataManagerProtocol? = GCDDataManager(fileURL: self.fileUrl)
+    var editingMode: Bool = false {
+        didSet{
+            self.setEditingState(editing: editingMode)
+        }
+    }
+    
+    private var profile: Profile?
+    private var saveChanges: ( () -> Void )?
+    
+    var dataManager: DataManagerProtocol? = GCDDataManager()
+    
+    private var dataWasChanged: Bool {
+        get{
+            return self.profile?.nameChanged ?? false || self.profile?.infoChanged ?? false || self.profile?.imageChanged ?? false
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(string: "\(#function)")
-        print(editButton.frame) // frame пока не известен, т.к. view на экране еще не появилась
+        self.editingMode = false
+        self.loadFromFile()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-//        print(editButton.frame) editButton явялется nil, т.к. в этом методе еще не подгружены outlet'ы
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            self.view.frame.origin.y = -keyboardHeight + 66
+            print("keyboard height is:" , keyboardHeight)
+        }
     }
+    
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    
+    
+    private func setEnabledState(enabled: Bool) {
+        self.gcdButton.isEnabled = enabled
+        self.operationButton.isEnabled = enabled
+    }
+    
     
     @IBAction func editButtonPressed(_ sender: Any) {
-        setEditing(true, animated: true)
+        self.editingMode = true
+        self.setEnabledState(enabled: false)
     }
     @IBAction func tapDone(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    private func loadFromFile() {
+        self.dataManager?.loadData(completion: { (profile) in
+            if let unwrappedProfile = profile {
+                self.profile = unwrappedProfile
+            }
+            
+            self.userImage.image = profile?.image ?? UIImage.init(named: "placeholder-user")
+            self.nameLabel.text = profile?.name ?? "Введите имя"
+            self.infoLabel.text = profile?.info ?? "Расскажите о себе"
+            
+            
+            self.profile = Profile(name: self.nameLabel.text, info: self.infoLabel.text, image: self.userImage.image)
+            
+        })
+    }
+    
+    private func setEditingState(editing: Bool) {
+        if(editing) {
+            self.nameTextField.text = "Введите имя"
+        }
+        self.addPictureButton.isHidden = !editing
+        
+        self.editButton.isHidden = editing
+        self.gcdButton.isHidden = !editing
+        self.operationButton.isHidden = !editing
+        
+        self.nameLabel.isHidden = editing
+        self.nameTextField.isHidden = !editing
+        
+        self.infoTextField.isHidden = !editing
+        self.infoLabel.isHidden = editing
+        
+    }
     
     
     private func layerStyleInstall() {
@@ -63,7 +132,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func addPictureButtonPressed(_ sender: UIButton) {
         println(string: "Выбери изображение профиля")
-        
         let imagePickerController = UIImagePickerController()
         
         let actionSheetAlertController = UIAlertController(title: "Выбор изображения", message:
@@ -96,6 +164,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.present(actionSheetAlertController, animated: true, completion: nil)
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    private func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Changes saved!", message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showErrorAlert() {
+        let alertController = UIAlertController(title: "Error", message: "could not save data", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Done", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default) { action in
+            self.saveChanges?();
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -103,7 +190,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            userImage.image = image
+            self.userImage.image = image
+            
+            if let savedImage = self.profile?.image {
+                let newImage = image.jpegData(compressionQuality: 100)!
+                let oldImage = savedImage.jpegData(compressionQuality: 100)!
+                self.profile?.imageChanged = !newImage.elementsEqual(oldImage)
+            } else {
+                self.profile?.imageChanged = true
+            }
+            
+            self.setEnabledState(enabled: self.dataWasChanged)
+        } else {
+            // error occured
+            print("Error picking image")
         }
         dismiss(animated: true, completion: nil)
     }
@@ -116,65 +216,73 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func textFieldEdited(_ sender: UITextField) {
         
-        gcdButton.isEnabled = true
-        operationButton.isEnabled = true
-        
         switch sender {
         case nameTextField:
-            print("name changed")
+            print("name changed ")
+            if let newName = sender.text {
+                self.profile?.nameChanged = (newName != (self.profile?.name ?? ""))
+                self.setEnabledState(enabled: self.dataWasChanged)
+            }
         case infoTextField:
-            print("info changed")
+            print("info changed ")
+            if let newInfo = sender.text {
+                self.profile?.infoChanged = (newInfo != (self.profile?.info ?? ""))
+                self.setEnabledState(enabled: self.dataWasChanged)
+//                infoWasChanged = (infoTextField.text != "") && (infoTextField.text != infoLabel.text)
+//                print(sender.text as Any)
+            }
         default:
             print("default")
         }
+//        setEnabledState(enabled: infoWasChanged || nameWasChanged)
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        self.activityIndicator.startAnimating()
+        self.nameTextField.resignFirstResponder()
+        self.infoTextField.resignFirstResponder()
         
-        switch sender.titleLabel!.text{
-        case "GCD":
-            print("GCD")
-            print("yes")
-//            self.activityIndicator.stopAnimating()
-        case "Operation":
-            print("operation")
-        default:
-            print("error")
+        self.saveChanges = {
+            
+            self.activityIndicator.startAnimating()
+            self.setEnabledState(enabled: false)
+            
+            self.profile?.name = self.nameTextField.text
+            self.profile?.info = self.infoTextField.text
+            self.profile?.image = self.userImage.image
+            
+            let titleOfButton = sender.titleLabel?.text
+            
+            if titleOfButton == "Operation" {
+                self.dataManager = OperationDataManager()
+            } else {
+                self.dataManager = GCDDataManager()
+            }
+            
+            
+            self.dataManager?.saveData(profile: self.profile!, completion: { (saveSucceeded : Bool) in
+                
+                self.activityIndicator.stopAnimating()
+                
+                if saveSucceeded {
+                    self.showSuccessAlert()
+                    self.loadFromFile()
+                } else {
+                    self.showErrorAlert()
+                }
+                
+                self.setEnabledState(enabled: true)
+                self.editingMode = !saveSucceeded
+            })
         }
+        
+        self.saveChanges?();
     }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        print("Editing!")
-        self.editButton.isHidden = true
-        if (self.isEditing) {
-            
-            addPictureButton.isHidden = false
-            
-            gcdButton.isHidden = false
-            gcdButton.isEnabled = false
-            
-            operationButton.isHidden = false
-            operationButton.isEnabled = false
-            
-            nameTextField.isHidden = false
-            
-            infoTextField.isHidden = false
-            
-        } else {
-            // we're not in edit mode
-            let newButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
-            navigationItem.leftBarButtonItem = newButton
-        }
-    }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         println(string: "\(#function)")
         print(editButton.frame) // frame уже известен, т.к. view уже появилась на экране
-        self.layerStyleInstall()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -195,6 +303,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         println(string: "\(#function)")
     }
     

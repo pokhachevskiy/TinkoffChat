@@ -143,7 +143,9 @@
                         <outlet property="addPictureButton" destination="KE1-YF-Ab4" id="atk-lW-HzH"/>
                         <outlet property="editButton" destination="LrZ-22-BCE" id="Bca-fL-rEV"/>
                         <outlet property="gcdButton" destination="pqd-aC-NzJ" id="ElB-YX-J8b"/>
+                        <outlet property="infoLabel" destination="A9B-Mk-VPO" id="8HE-YO-ACr"/>
                         <outlet property="infoTextField" destination="dcd-bf-atz" id="Vn7-TX-Rpb"/>
+                        <outlet property="nameLabel" destination="Ue6-y7-7JU" id="tJ6-PG-oQX"/>
                         <outlet property="nameTextField" destination="Plc-vT-3jK" id="qFo-kP-srl"/>
                         <outlet property="operationButton" destination="eow-RB-wZm" id="nf2-UN-3O3"/>
                         <outlet property="userImage" destination="GMH-jL-6m3" id="4wj-Pc-4n6"/>

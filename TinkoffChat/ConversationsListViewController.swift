@@ -59,6 +59,7 @@ class ConversationsListViewController: UITableViewController {
     var arrayOfCellsWithMessagesOnline = [MessageClass]()
     var arrayOfCellsWithMessagesOffline = [MessageClass]()
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
@@ -155,13 +156,17 @@ class ConversationsListViewController: UITableViewController {
     func logThemeChanging (selectedTheme: UIColor){
         print(#function, selectedTheme)
         UINavigationBar.appearance().barTintColor = selectedTheme
-        UserDefaults.standard.setColor(color: selectedTheme, forKey: "Theme")
+        DispatchQueue.global(qos: .userInitiated).async {
+            UserDefaults.standard.setColor(color: selectedTheme, forKey: "Theme")
+        }
     }
     
     func logThemeChangingSwift (selectedTheme: ThemesStructureSwift.Theme){
         print(#function, selectedTheme)
         UINavigationBar.appearance().barTintColor = selectedTheme.navigationBarColor
-        UserDefaults.standard.setColor(color: selectedTheme.navigationBarColor, forKey: "Theme")
+        DispatchQueue.global(qos: .userInitiated).async {
+            UserDefaults.standard.setColor(color: selectedTheme.navigationBarColor, forKey: "Theme")
+        }
     }
     
     
