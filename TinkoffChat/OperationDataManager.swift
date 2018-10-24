@@ -11,11 +11,16 @@ import Foundation
 class OperationDataManager: DataManagerProtocol {
     
     let profileHandler: ProfileHandler = ProfileHandler()
+    let operationQueue = OperationQueue()
+    
+    init() {
+        operationQueue.maxConcurrentOperationCount = 1
+    }
     
     
     func saveData(profile: Profile, completion: @escaping (Bool) -> ()) {
         
-        let operationQueue = OperationQueue()
+        
         let saveOperation = SaveProfileOperation(profileHandler: self.profileHandler, profile: profile)
         saveOperation.qualityOfService = .userInitiated
         
@@ -30,7 +35,6 @@ class OperationDataManager: DataManagerProtocol {
     
     func loadData(completion: @escaping (Profile?) -> ()) {
         
-        let operationQueue = OperationQueue()
         let loadOperation = LoadProfileOperation(profileHandler: self.profileHandler)
         loadOperation.qualityOfService = .userInitiated
         

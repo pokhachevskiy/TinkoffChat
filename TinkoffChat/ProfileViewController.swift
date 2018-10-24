@@ -44,7 +44,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.editingMode = false
+//        self.nameTextField.text = profile?.name
         self.loadFromFile()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -97,7 +99,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     private func setEditingState(editing: Bool) {
         if(editing) {
-            self.nameTextField.text = "Введите имя"
+            self.nameTextField.text = profile?.name ?? nameLabel.text ?? "Введите имя"
+            self.infoTextField.text = profile?.info ?? infoLabel.text ?? "Расскажите о себе"
         }
         self.addPictureButton.isHidden = !editing
         

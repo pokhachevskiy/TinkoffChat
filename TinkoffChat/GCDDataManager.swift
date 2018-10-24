@@ -12,7 +12,7 @@ import Foundation
 class GCDDataManager : DataManagerProtocol{
     
     let profileHandler: ProfileHandler = ProfileHandler()
-    let queue = DispatchQueue.global(qos: .userInteractive)
+    let queue = DispatchQueue(label:"com.pokhachevskiy.TinkoffChat" ,qos: .userInteractive)
     
     func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ()) {
         queue.async {
