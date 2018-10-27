@@ -88,39 +88,71 @@
 			isa = PBXGroup;
 			children = (
 				A5313CCD2154CF2C00296E88 /* AppDelegate.swift */,
-				A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */,
-				A53A7BF0216548BB00BC41FC /* ConversationsListViewController.swift */,
-				A5828B062167B15D0048E3D0 /* ConversationTableViewController.swift */,
-				A5EF39492172791700777113 /* ThemesViewControllerSwift.swift */,
-				A5EF394B21732BC800777113 /* ThemesStructureSwift.swift */,
-				A53A7BF221654D0D00BC41FC /* ConversationCell.swift */,
-				A5828B042167B0F90048E3D0 /* MessageCell.swift */,
+				A5F64F4821846FF400BFA62A /* ProfileViewController */,
+				A5F64F4A2184703200BFA62A /* ConversationList */,
+				A5F64F492184702000BFA62A /* Conversation */,
+				A5F64F4721846FBF00BFA62A /* ThemesViewContoller */,
 				A5313CD12154CF2C00296E88 /* Main.storyboard */,
 				A5313CD72154CF2D00296E88 /* Assets.xcassets */,
 				A5313CD92154CF2D00296E88 /* LaunchScreen.storyboard */,
 				A5313CDC2154CF2D00296E88 /* Info.plist */,
 				A5313CD42154CF2C00296E88 /* TinkoffChat.xcdatamodeld */,
 				A50ED4022156833A00FCE422 /* Logging.swift */,
-				A5EF391A21726FEE00777113 /* ThemesViewControllerObjC */,
 				A567972F2170C19E006ADF36 /* TinkoffChat-Bridging-Header.h */,
-				A56797342170CAC6006ADF36 /* Themes.h */,
-				A56797352170CAC6006ADF36 /* Themes.m */,
-				A567EC12217A498500FAE972 /* GCDDataManager.swift */,
-				A567EC16217B27B700FAE972 /* DataManagerProtocol.swift */,
-				6740D9DB217B9EFC004270D3 /* OperationDataManager.swift */,
-				679FB918217C9FD800F8FFDB /* Profile.swift */,
-				679FB91A217CA7C100F8FFDB /* Operations.swift */,
+				A5F64F4B2184704400BFA62A /* DataManager */,
 			);
 			path = TinkoffChat;
 			sourceTree = "<group>";
 		};
-		A5EF391A21726FEE00777113 /* ThemesViewControllerObjC */ = {
+		A5F64F4721846FBF00BFA62A /* ThemesViewContoller */ = {
 			isa = PBXGroup;
 			children = (
+				A5EF39492172791700777113 /* ThemesViewControllerSwift.swift */,
+				A5EF394B21732BC800777113 /* ThemesStructureSwift.swift */,
 				A56797302170C19E006ADF36 /* ThemesViewController.h */,
 				A56797312170C19E006ADF36 /* ThemesViewController.m */,
+				A56797342170CAC6006ADF36 /* Themes.h */,
+				A56797352170CAC6006ADF36 /* Themes.m */,
 			);
-			path = ThemesViewControllerObjC;
+			path = ThemesViewContoller;
+			sourceTree = "<group>";
+		};
+		A5F64F4821846FF400BFA62A /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A5313CCF2154CF2C00296E88 /* ProfileViewController.swift */,
+				679FB918217C9FD800F8FFDB /* Profile.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		A5F64F492184702000BFA62A /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				A5828B062167B15D0048E3D0 /* ConversationTableViewController.swift */,
+				A5828B042167B0F90048E3D0 /* MessageCell.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		A5F64F4A2184703200BFA62A /* ConversationList */ = {
+			isa = PBXGroup;
+			children = (
+				A53A7BF0216548BB00BC41FC /* ConversationsListViewController.swift */,
+				A53A7BF221654D0D00BC41FC /* ConversationCell.swift */,
+			);
+			path = ConversationList;
+			sourceTree = "<group>";
+		};
+		A5F64F4B2184704400BFA62A /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				A567EC12217A498500FAE972 /* GCDDataManager.swift */,
+				A567EC16217B27B700FAE972 /* DataManagerProtocol.swift */,
+				6740D9DB217B9EFC004270D3 /* OperationDataManager.swift */,
+				679FB91A217CA7C100F8FFDB /* Operations.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
