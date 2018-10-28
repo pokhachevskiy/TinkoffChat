@@ -230,92 +230,139 @@
             </objects>
             <point key="canvasLocation" x="1691" y="659"/>
         </scene>
-        <!--ConversationViewController-->
-        <scene sceneID="JHx-0g-oie">
+        <!--Title-->
+        <scene sceneID="AUF-Th-Txa">
             <objects>
-                <tableViewController id="lOi-nu-dmL" userLabel="ConversationViewController" customClass="ConversationTableViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QF9-Mz-rGU">
+                <viewController id="5PQ-Bm-8uA" customClass="ConversationViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mim-5q-RTZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-cB-x0D">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-Mz-rGU">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IncomingMessageCell" rowHeight="76" id="G5O-Uu-Nzf" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="320" height="76"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G5O-Uu-Nzf" id="e8Q-vt-yPD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTI-SL-VFH" userLabel="IncomingMessageLabel">
+                                                            <rect key="frame" x="6" y="2" width="241" height="71.5"/>
+                                                            <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="6"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="width" relation="lessThanOrEqual" secondItem="e8Q-vt-yPD" secondAttribute="width" multiplier="0.75" constant="1" id="01g-ES-fIS"/>
+                                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="leading" secondItem="e8Q-vt-yPD" secondAttribute="leading" constant="6" id="MwB-Xl-2uA"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RTI-SL-VFH" secondAttribute="trailing" id="cvv-Vp-H4N"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RTI-SL-VFH" secondAttribute="bottom" constant="2" id="jXF-1f-8jq"/>
+                                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="top" secondItem="e8Q-vt-yPD" secondAttribute="top" constant="2" id="wyW-tn-pxR"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="textMessageLabel" destination="RTI-SL-VFH" id="FYu-RL-uht"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OutcomingMessageCell" rowHeight="76" id="5So-MY-SxH" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="104" width="320" height="76"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5So-MY-SxH" id="0XU-zh-4vp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73M-Q6-Z6e" userLabel="OutcomingMessageLabel">
+                                                            <rect key="frame" x="76.5" y="2" width="237.5" height="71.5"/>
+                                                            <color key="backgroundColor" red="0.0020097530459999998" green="1" blue="0.14423110259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <string key="text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="6"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="73M-Q6-Z6e" secondAttribute="trailing" constant="6" id="Mhk-nr-7ey"/>
+                                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0XU-zh-4vp" secondAttribute="leading" id="hqB-2U-JMU"/>
+                                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="top" secondItem="0XU-zh-4vp" secondAttribute="top" constant="2" id="j7s-an-21s"/>
+                                                        <constraint firstAttribute="bottom" secondItem="73M-Q6-Z6e" secondAttribute="bottom" constant="2" id="pQo-v8-OS6"/>
+                                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="width" relation="lessThanOrEqual" secondItem="0XU-zh-4vp" secondAttribute="width" multiplier="0.75" constant="1" id="qEy-Xx-jPQ"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="textMessageLabel" destination="73M-Q6-Z6e" id="aNZ-9J-xiu"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcM-mq-dhk">
+                                        <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LjR-vp-BKn">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="cf5-r0-wSx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60D-bQ-Vms">
+                                                <rect key="frame" x="280" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" red="0.0020097530459999998" green="1" blue="0.14423110259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="60D-bQ-Vms" secondAttribute="height" multiplier="1:1" id="5qx-8O-bWZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Send"/>
+                                                <connections>
+                                                    <action selector="sendButtonPressed:" destination="5PQ-Bm-8uA" eventType="touchUpInside" id="j85-EN-U8L"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="60D-bQ-Vms" firstAttribute="height" secondItem="LjR-vp-BKn" secondAttribute="height" id="R46-BZ-eBE"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IncomingMessageCell" rowHeight="76" id="G5O-Uu-Nzf" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="76"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G5O-Uu-Nzf" id="e8Q-vt-yPD">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTI-SL-VFH" userLabel="IncomingMessageLabel">
-                                            <rect key="frame" x="6" y="2" width="241" height="71.5"/>
-                                            <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="6"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="width" relation="lessThanOrEqual" secondItem="e8Q-vt-yPD" secondAttribute="width" multiplier="0.75" constant="1" id="01g-ES-fIS"/>
-                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="leading" secondItem="e8Q-vt-yPD" secondAttribute="leading" constant="6" id="MwB-Xl-2uA"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RTI-SL-VFH" secondAttribute="trailing" id="cvv-Vp-H4N"/>
-                                        <constraint firstAttribute="bottom" secondItem="RTI-SL-VFH" secondAttribute="bottom" constant="2" id="jXF-1f-8jq"/>
-                                        <constraint firstItem="RTI-SL-VFH" firstAttribute="top" secondItem="e8Q-vt-yPD" secondAttribute="top" constant="2" id="wyW-tn-pxR"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="textMessageLabel" destination="RTI-SL-VFH" id="FYu-RL-uht"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OutcomingMessageCell" rowHeight="76" id="5So-MY-SxH" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="320" height="76"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5So-MY-SxH" id="0XU-zh-4vp">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73M-Q6-Z6e" userLabel="OutcomingMessageLabel">
-                                            <rect key="frame" x="76.5" y="2" width="237.5" height="71.5"/>
-                                            <color key="backgroundColor" red="0.0020097530459999998" green="1" blue="0.14423110259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <string key="text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="6"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="73M-Q6-Z6e" secondAttribute="trailing" constant="6" id="Mhk-nr-7ey"/>
-                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0XU-zh-4vp" secondAttribute="leading" id="hqB-2U-JMU"/>
-                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="top" secondItem="0XU-zh-4vp" secondAttribute="top" constant="2" id="j7s-an-21s"/>
-                                        <constraint firstAttribute="bottom" secondItem="73M-Q6-Z6e" secondAttribute="bottom" constant="2" id="pQo-v8-OS6"/>
-                                        <constraint firstItem="73M-Q6-Z6e" firstAttribute="width" relation="lessThanOrEqual" secondItem="0XU-zh-4vp" secondAttribute="width" multiplier="0.75" constant="1" id="qEy-Xx-jPQ"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="textMessageLabel" destination="73M-Q6-Z6e" id="aNZ-9J-xiu"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="lOi-nu-dmL" id="lHK-vk-qqg"/>
-                            <outlet property="delegate" destination="lOi-nu-dmL" id="xxw-o5-h7J"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="QMN-YT-xgz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ra7-7f-eiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Zfw-cB-x0D" secondAttribute="bottom" id="b9H-lg-s7C"/>
+                            <constraint firstItem="Zfw-cB-x0D" firstAttribute="trailing" secondItem="cYX-nt-9GX" secondAttribute="trailing" id="bGZ-gp-OEs"/>
+                            <constraint firstItem="Zfw-cB-x0D" firstAttribute="leading" secondItem="cYX-nt-9GX" secondAttribute="leading" id="fhm-Sk-DeI"/>
+                            <constraint firstItem="Zfw-cB-x0D" firstAttribute="top" secondItem="mim-5q-RTZ" secondAttribute="top" id="oid-8c-uoW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cYX-nt-9GX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ImB-LD-xNH"/>
+                    <connections>
+                        <outlet property="conversationTableView" destination="QF9-Mz-rGU" id="Fg3-Hz-m89"/>
+                        <outlet property="sendButton" destination="60D-bQ-Vms" id="6EG-17-kYy"/>
+                        <outlet property="textView" destination="LjR-vp-BKn" id="oi8-rA-DWw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xrs-bL-Wgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2764" y="-638"/>
+            <point key="canvasLocation" x="3622.5" y="-645.42253521126759"/>
         </scene>
         <!--Conversations List View Controller-->
         <scene sceneID="RL3-so-wDn">
@@ -366,7 +413,7 @@
                                     <outlet property="dateTime" destination="KLF-xo-Hbd" id="c8f-eE-qGm"/>
                                     <outlet property="nameLabel" destination="Bpp-ct-XEL" id="VOA-CF-ECK"/>
                                     <outlet property="textMessage" destination="xKx-CN-Vmh" id="o3U-oe-0hH"/>
-                                    <segue destination="lOi-nu-dmL" kind="show" identifier="toConversation" id="c6f-Qo-Q40"/>
+                                    <segue destination="5PQ-Bm-8uA" kind="show" identifier="toConversation" id="oXq-Qp-PcB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
