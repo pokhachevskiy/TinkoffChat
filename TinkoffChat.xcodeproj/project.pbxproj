@@ -33,6 +33,7 @@
 		A5F64F4F2184726100BFA62A /* CommunicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F64F4E2184726100BFA62A /* CommunicatorProtocol.swift */; };
 		A5F64F51218472D700BFA62A /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F64F50218472D700BFA62A /* CommunicatorDelegate.swift */; };
 		A5F64F552184741300BFA62A /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F64F542184741300BFA62A /* CommunicationManager.swift */; };
+		A5F64F572189D6F800BFA62A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F64F562189D6F800BFA62A /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		A5F64F4E2184726100BFA62A /* CommunicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorProtocol.swift; sourceTree = "<group>"; };
 		A5F64F50218472D700BFA62A /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
 		A5F64F542184741300BFA62A /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		A5F64F562189D6F800BFA62A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				A50ED4022156833A00FCE422 /* Logging.swift */,
 				A5313CCD2154CF2C00296E88 /* AppDelegate.swift */,
 				A567972F2170C19E006ADF36 /* TinkoffChat-Bridging-Header.h */,
+				A5F64F562189D6F800BFA62A /* CoreDataManager.swift */,
 			);
 			path = TinkoffChat;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				679FB919217C9FD800F8FFDB /* Profile.swift in Sources */,
 				A5828B052167B0F90048E3D0 /* MessageCell.swift in Sources */,
 				A56797362170CAC6006ADF36 /* Themes.m in Sources */,
+				A5F64F572189D6F800BFA62A /* CoreDataManager.swift in Sources */,
 				6740D9DC217B9EFC004270D3 /* OperationDataManager.swift in Sources */,
 				67944B6F2184F63200402872 /* Conversation.swift in Sources */,
 				A5EF394C21732BC800777113 /* ThemesStructureSwift.swift in Sources */,
