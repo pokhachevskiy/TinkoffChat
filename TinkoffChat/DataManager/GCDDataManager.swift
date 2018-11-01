@@ -17,7 +17,7 @@ class GCDDataManager : DataManagerProtocol{
     func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ()) {
         queue.async {
             let saveSucceeded = self.profileHandler.saveData(profile: profile)
-            
+        
             DispatchQueue.main.async {
                 completion(saveSucceeded)
             }

@@ -12,6 +12,7 @@ var fileUrl: URL = FileManager.default.urls(for: .documentDirectory, in: .userDo
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
+    @IBOutlet weak var coreDataButton: UIButton!
     @IBOutlet weak var addPictureButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var userImage: UIImageView!
@@ -32,7 +33,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private var profile: Profile?
     private var saveChanges: ( () -> Void )?
     
-    var dataManager: DataManagerProtocol? = GCDDataManager()
+    var dataManager: DataManagerProtocol? = CoreDataManager()
     
     private var dataWasChanged: Bool {
         get{
@@ -69,6 +70,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     private func setEnabledState(enabled: Bool) {
         self.gcdButton.isEnabled = enabled
+        self.coreDataButton.isEnabled = enabled
         self.operationButton.isEnabled = enabled
     }
     
@@ -107,6 +109,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.editButton.isHidden = editing
         self.gcdButton.isHidden = !editing
         self.operationButton.isHidden = !editing
+        self.coreDataButton.isHidden = !editing
         
         self.nameLabel.isHidden = editing
         self.nameTextField.isHidden = !editing
@@ -257,8 +260,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             
             if titleOfButton == "Operation" {
                 self.dataManager = OperationDataManager()
-            } else {
+            } else if titleOfButton == "GCD "{
                 self.dataManager = GCDDataManager()
+            } else {
+                self.dataManager = CoreDataManager()
             }
             
             

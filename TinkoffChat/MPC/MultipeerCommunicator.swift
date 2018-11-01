@@ -11,7 +11,7 @@ import MultipeerConnectivity
 
 class MultipeerCommunicator: NSObject, Communicator, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate {
     
-    var delegate: CommunicatorDelegate?
+    weak var delegate: CommunicatorDelegate?
     
     var online: Bool = false
     

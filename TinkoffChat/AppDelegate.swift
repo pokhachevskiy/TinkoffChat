@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var currentApplicationState: UIApplication.State = UIApplication.shared.applicationState
     var previousApplicationState: UIApplication.State = UIApplication.shared.applicationState
-
+    var coreDataStack = CoreDataStack()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         currentApplicationState = UIApplication.shared.applicationState
@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().barTintColor = color
             UINavigationBar.appearance().backgroundColor = color
         }
+        
         // Override point for customization after application launch.
         return true
     }

@@ -96,22 +96,33 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wMY-Eh-1bP">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtC-L1-5i1" userLabel="coreDataButton">
+                                <rect key="frame" x="16" y="522" width="136" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.87923229340895936" blue="0.087645116377166321" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="CoreData"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0LH-iX-iHr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LrZ-22-BCE" secondAttribute="bottom" constant="16" id="1TT-us-IUI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pqd-aC-NzJ" secondAttribute="bottom" constant="16" id="3xo-8x-pZv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rtC-L1-5i1" secondAttribute="bottom" constant="16" id="4iw-IH-76g"/>
                             <constraint firstItem="KE1-YF-Ab4" firstAttribute="trailing" secondItem="GMH-jL-6m3" secondAttribute="trailing" id="Btr-W3-HFl"/>
                             <constraint firstItem="A9B-Mk-VPO" firstAttribute="top" secondItem="Plc-vT-3jK" secondAttribute="bottom" constant="10" id="EU7-jo-Ku4"/>
                             <constraint firstItem="Plc-vT-3jK" firstAttribute="top" secondItem="GMH-jL-6m3" secondAttribute="bottom" constant="16" id="H0l-rx-vpa"/>
                             <constraint firstItem="KE1-YF-Ab4" firstAttribute="bottom" secondItem="GMH-jL-6m3" secondAttribute="bottom" id="H78-6Q-bkI"/>
                             <constraint firstItem="eow-RB-wZm" firstAttribute="leading" secondItem="pqd-aC-NzJ" secondAttribute="trailing" constant="16" id="HyE-Bi-0DO"/>
+                            <constraint firstItem="rtC-L1-5i1" firstAttribute="width" secondItem="eow-RB-wZm" secondAttribute="width" id="MBR-YF-FRV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GMH-jL-6m3" secondAttribute="trailing" constant="16" id="N75-4B-g1F"/>
                             <constraint firstItem="Ue6-y7-7JU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NN8-6u-7qZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eow-RB-wZm" secondAttribute="trailing" constant="16" id="QZK-1h-OkR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LrZ-22-BCE" secondAttribute="trailing" constant="16" id="RQf-Ld-2Lr"/>
                             <constraint firstItem="Ue6-y7-7JU" firstAttribute="top" secondItem="GMH-jL-6m3" secondAttribute="bottom" constant="16" id="RZa-Uz-Oyh"/>
                             <constraint firstItem="pqd-aC-NzJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Rsw-0q-Sm2"/>
+                            <constraint firstItem="rtC-L1-5i1" firstAttribute="height" secondItem="eow-RB-wZm" secondAttribute="height" id="Uxf-Un-0eP"/>
                             <constraint firstItem="pqd-aC-NzJ" firstAttribute="width" secondItem="eow-RB-wZm" secondAttribute="width" id="XDi-18-PXm"/>
                             <constraint firstItem="Plc-vT-3jK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XGx-DO-UPJ"/>
                             <constraint firstItem="wMY-Eh-1bP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aeY-Hn-J7v"/>
@@ -124,12 +135,25 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ue6-y7-7JU" secondAttribute="trailing" constant="16" id="kVU-a4-ziM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eow-RB-wZm" secondAttribute="bottom" constant="16" id="pJE-yC-w87"/>
                             <constraint firstItem="A9B-Mk-VPO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pfC-3t-GFe"/>
+                            <constraint firstItem="eow-RB-wZm" firstAttribute="leading" secondItem="rtC-L1-5i1" secondAttribute="trailing" constant="16" id="q1e-rG-Q1K"/>
+                            <constraint firstItem="rtC-L1-5i1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qt9-6W-jvM"/>
                             <constraint firstItem="LrZ-22-BCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qzC-V9-ZFF"/>
                             <constraint firstItem="A9B-Mk-VPO" firstAttribute="top" secondItem="Ue6-y7-7JU" secondAttribute="bottom" constant="10" id="urd-22-EGI"/>
                             <constraint firstItem="wMY-Eh-1bP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vcN-T1-Bxc"/>
                             <constraint firstItem="dcd-bf-atz" firstAttribute="top" secondItem="Plc-vT-3jK" secondAttribute="bottom" constant="10" id="yih-Zk-Xf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="pqd-aC-NzJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Rsw-0q-Sm2"/>
+                                <exclude reference="XDi-18-PXm"/>
+                                <exclude reference="3xo-8x-pZv"/>
+                                <exclude reference="HyE-Bi-0DO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Профиль" id="ueX-oU-UuG">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="cDh-Qq-t0D" userLabel="Button">
@@ -141,6 +165,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="wMY-Eh-1bP" id="HlC-SH-RQL"/>
                         <outlet property="addPictureButton" destination="KE1-YF-Ab4" id="atk-lW-HzH"/>
+                        <outlet property="coreDataButton" destination="rtC-L1-5i1" id="Y7k-6H-scG"/>
                         <outlet property="editButton" destination="LrZ-22-BCE" id="Bca-fL-rEV"/>
                         <outlet property="gcdButton" destination="pqd-aC-NzJ" id="ElB-YX-J8b"/>
                         <outlet property="infoLabel" destination="A9B-Mk-VPO" id="8HE-YO-ACr"/>
