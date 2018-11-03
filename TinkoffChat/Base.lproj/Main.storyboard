@@ -148,10 +148,10 @@
                                 <exclude reference="pqd-aC-NzJ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Rsw-0q-Sm2"/>
-                                <exclude reference="XDi-18-PXm"/>
                                 <exclude reference="3xo-8x-pZv"/>
                                 <exclude reference="HyE-Bi-0DO"/>
+                                <exclude reference="Rsw-0q-Sm2"/>
+                                <exclude reference="XDi-18-PXm"/>
                             </mask>
                         </variation>
                     </view>
@@ -264,10 +264,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-cB-x0D">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-Mz-rGU">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="464"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IncomingMessageCell" rowHeight="76" id="G5O-Uu-Nzf" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
@@ -339,7 +339,7 @@
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcM-mq-dhk">
-                                        <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="464" width="320" height="40"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LjR-vp-BKn">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
@@ -371,10 +371,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Zfw-cB-x0D" secondAttribute="bottom" id="b9H-lg-s7C"/>
+                            <constraint firstItem="cYX-nt-9GX" firstAttribute="bottom" secondItem="Zfw-cB-x0D" secondAttribute="bottom" id="b9H-lg-s7C"/>
                             <constraint firstItem="Zfw-cB-x0D" firstAttribute="trailing" secondItem="cYX-nt-9GX" secondAttribute="trailing" id="bGZ-gp-OEs"/>
                             <constraint firstItem="Zfw-cB-x0D" firstAttribute="leading" secondItem="cYX-nt-9GX" secondAttribute="leading" id="fhm-Sk-DeI"/>
-                            <constraint firstItem="Zfw-cB-x0D" firstAttribute="top" secondItem="mim-5q-RTZ" secondAttribute="top" id="oid-8c-uoW"/>
+                            <constraint firstItem="Zfw-cB-x0D" firstAttribute="top" secondItem="cYX-nt-9GX" secondAttribute="top" id="oid-8c-uoW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cYX-nt-9GX"/>
                     </view>

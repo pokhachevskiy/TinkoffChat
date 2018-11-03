@@ -11,9 +11,6 @@ import CoreData
 
 class CoreDataStack{
     
-    //Singleton
-//    static let instance = CoreDataManager()
-    
     init() {}
     
     private var storeURL: URL {

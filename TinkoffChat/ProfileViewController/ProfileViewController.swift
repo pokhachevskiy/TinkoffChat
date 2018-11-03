@@ -7,8 +7,6 @@
 //
 
 import UIKit
-var fileUrl: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
@@ -45,12 +43,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.editingMode = false
-//        self.nameTextField.text = profile?.name
         self.loadFromFile()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -208,7 +205,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             
             self.setEnabledState(enabled: self.dataWasChanged)
         } else {
-            // error occured
             print("Error picking image")
         }
         dismiss(animated: true, completion: nil)
@@ -216,12 +212,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        println(string: "\(#function)")
     }
     
     
     @IBAction func textFieldEdited(_ sender: UITextField) {
-        
         switch sender {
         case nameTextField:
             print("name changed ")
@@ -234,13 +228,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             if let newInfo = sender.text {
                 self.profile?.infoChanged = (newInfo != (self.profile?.info ?? ""))
                 self.setEnabledState(enabled: self.dataWasChanged)
-//                infoWasChanged = (infoTextField.text != "") && (infoTextField.text != infoLabel.text)
-//                print(sender.text as Any)
             }
         default:
             print("default")
         }
-//        setEnabledState(enabled: infoWasChanged || nameWasChanged)
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -288,32 +279,29 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        println(string: "\(#function)")
-        print(editButton.frame) // frame уже известен, т.к. view уже появилась на экране
-        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        println(string: "\(#function)")
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layerStyleInstall()
-        println(string: "\(#function)")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        println(string: "\(#function)")
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        println(string: "\(#function)")
+        
     }
     
 
