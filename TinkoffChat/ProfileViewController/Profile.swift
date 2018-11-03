@@ -38,14 +38,6 @@ class ProfileHandler {
     
     func saveData(profile: Profile) -> Bool {
         do {
-//            let delegate = UIApplication.shared.delegate as! AppDelegate
-//            let tempProfile = AppUser(context: delegate.coreDataStack.masterContext!)
-//            tempProfile.userName = profile.name
-//            tempProfile.userInfo = profile.info
-//            tempProfile.userImage = profile.image?.jpegData(compressionQuality: 100)
-//
-//            delegate.coreDataStack.performSave(context: delegate.coreDataStack.masterContext!, completionHandler: nil)
-            
             if profile.nameChanged, let unwrappedName = profile.name {
                 UserDefaults.standard.setValue(unwrappedName, forKey: self.nameFileName)
             }
@@ -67,16 +59,11 @@ class ProfileHandler {
     
     func loadData() -> Profile? {
         let profile: Profile = Profile()
-//        let delegate = UIApplication.shared.delegate as! AppDelegate
-//        let tempUser = delegate.coreDataStack.findAppUser(in: delegate.coreDataStack.masterContext!)
         
         profile.name = UserDefaults.standard.string(forKey: self.nameFileName)
         profile.info = UserDefaults.standard.string(forKey: self.infoFileName)
         profile.image = UIImage(contentsOfFile: filePath.appendingPathComponent(self.imageFileName).path)
-        
-//        profile.name = tempUser?.userName
-//        profile.info = tempUser?.userInfo
-//        profile.image = UIImage(data: (tempUser?.userImage)!)
+
         return profile
     }
     

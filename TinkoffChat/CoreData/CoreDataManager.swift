@@ -30,9 +30,6 @@ class CoreDataManager: DataManagerProtocol{
     }
     
     func loadData(completion: @escaping (_ profile: Profile?) -> ()) {
-//
-//        let retrievedProfile = self.profileHandler.loadData()
-//
         let profile: Profile = Profile()
         let mainContext = self.coreDataStack.mainContext
         mainContext.perform {

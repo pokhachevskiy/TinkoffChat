@@ -75,24 +75,14 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         communicator.delegate = communicationManager
+        communicationManager.conversationsListDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ConversationsListReloadData"), object: nil)
         tableView.reloadData()
     }
-    
-    @objc private func reloadData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        
-        // removing observers
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("ConversationsListReloadData"), object: nil)
     }
     
     func logThemeChanging (selectedTheme: UIColor){
@@ -127,6 +117,11 @@ class ConversationsListViewController: UITableViewController {
                     conversationViewController.loadData(with: cell)
                     conversationViewController.communicator = communicator
                     conversationViewController.conversation = communicationManager.conversations[status[indexPath.section]!]?[indexPath.row]
+                    conversationViewController.conversationsListDelegate = self
+                    communicationManager.conversationDelegate = conversationViewController
+//                    conversationViewController 
+//                    conversationViewController.communicationManager.conversationsListDelegate = self
+//                    conversationViewController.communicationManager.conversationDelegate = conversationViewController
                 }
             }
         case "toThemes":
@@ -149,6 +144,15 @@ extension ConversationsListViewController : ​ThemesViewControllerDelegate {
     func themesViewController(_ controller: ThemesViewController, didSelectTheme selectedTheme: UIColor) {
         self.logThemeChanging(selectedTheme: selectedTheme)
     }
-    
-    
+}
+
+extension ConversationsListViewController: MPCConversationsListDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    func sortConversationData() {
+        communicationManager.conversations["online"]?.sort(by: Conversation.sortByDate)
+    }
 }

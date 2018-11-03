@@ -27,6 +27,8 @@
 		A567EC17217B27B700FAE972 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567EC16217B27B700FAE972 /* DataManagerProtocol.swift */; };
 		A5828B052167B0F90048E3D0 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828B042167B0F90048E3D0 /* MessageCell.swift */; };
 		A5828B072167B15D0048E3D0 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828B062167B15D0048E3D0 /* ConversationViewController.swift */; };
+		A5DB7BBC218DF2DF0032D58C /* MPCConversationsListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB7BBB218DF2DF0032D58C /* MPCConversationsListDelegate.swift */; };
+		A5DB7BBE218DF6530032D58C /* MPCConversationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB7BBD218DF6530032D58C /* MPCConversationDelegate.swift */; };
 		A5EF39472172758C00777113 /* ThemesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56797312170C19E006ADF36 /* ThemesViewController.m */; };
 		A5EF39482172778A00777113 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5313CD12154CF2C00296E88 /* Main.storyboard */; };
 		A5EF394A2172791700777113 /* ThemesViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF39492172791700777113 /* ThemesViewControllerSwift.swift */; };
@@ -65,6 +67,8 @@
 		A567EC16217B27B700FAE972 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
 		A5828B042167B0F90048E3D0 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		A5828B062167B15D0048E3D0 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		A5DB7BBB218DF2DF0032D58C /* MPCConversationsListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCConversationsListDelegate.swift; sourceTree = "<group>"; };
+		A5DB7BBD218DF6530032D58C /* MPCConversationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCConversationDelegate.swift; sourceTree = "<group>"; };
 		A5EF39492172791700777113 /* ThemesViewControllerSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewControllerSwift.swift; sourceTree = "<group>"; };
 		A5EF394B21732BC800777113 /* ThemesStructureSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesStructureSwift.swift; sourceTree = "<group>"; };
 		A5F64F4E2184726100BFA62A /* CommunicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorProtocol.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				A5F64F50218472D700BFA62A /* CommunicatorDelegate.swift */,
 				A5F64F542184741300BFA62A /* CommunicationManager.swift */,
 				67944B6C21849EFC00402872 /* MultipeerCommunicator.swift */,
+				A5DB7BBB218DF2DF0032D58C /* MPCConversationsListDelegate.swift */,
+				A5DB7BBD218DF6530032D58C /* MPCConversationDelegate.swift */,
 			);
 			path = MPC;
 			sourceTree = "<group>";
@@ -120,6 +126,7 @@
 				A5F64F492184702000BFA62A /* Conversation */,
 				A5F64F4721846FBF00BFA62A /* ThemesViewContoller */,
 				67944B722185D5C500402872 /* MPC */,
+				A5DB7BBF218E04880032D58C /* CoreData */,
 				A5313CD12154CF2C00296E88 /* Main.storyboard */,
 				A5313CD72154CF2D00296E88 /* Assets.xcassets */,
 				A5313CD92154CF2D00296E88 /* LaunchScreen.storyboard */,
@@ -128,10 +135,17 @@
 				A50ED4022156833A00FCE422 /* Logging.swift */,
 				A5313CCD2154CF2C00296E88 /* AppDelegate.swift */,
 				A567972F2170C19E006ADF36 /* TinkoffChat-Bridging-Header.h */,
+			);
+			path = TinkoffChat;
+			sourceTree = "<group>";
+		};
+		A5DB7BBF218E04880032D58C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
 				A5F64F562189D6F800BFA62A /* CoreDataStack.swift */,
 				67996DC7218B49E4001227A2 /* CoreDataManager.swift */,
 			);
-			path = TinkoffChat;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		A5F64F4721846FBF00BFA62A /* ThemesViewContoller */ = {
@@ -265,6 +279,8 @@
 				A5F64F4F2184726100BFA62A /* CommunicatorProtocol.swift in Sources */,
 				A5F64F552184741300BFA62A /* CommunicationManager.swift in Sources */,
 				A5EF39472172758C00777113 /* ThemesViewController.m in Sources */,
+				A5DB7BBC218DF2DF0032D58C /* MPCConversationsListDelegate.swift in Sources */,
+				A5DB7BBE218DF6530032D58C /* MPCConversationDelegate.swift in Sources */,
 				A5828B072167B15D0048E3D0 /* ConversationViewController.swift in Sources */,
 				A53A7BF321654D0D00BC41FC /* ConversationCell.swift in Sources */,
 				A567EC13217A498500FAE972 /* GCDDataManager.swift in Sources */,

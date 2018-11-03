@@ -22,6 +22,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     var communicator: Communicator!
     var conversation: Conversation!
+    var conversationsListDelegate: MPCConversationsListDelegate?
+//    var communicationManager: CommunicationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +91,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
                 self?.conversation.messages.insert(MessageModel(textMessage: text, isIncoming: false), at: 0)
                 
                 self?.conversationTableView.reloadData()
-                
-                NotificationCenter.default.post(name: Notification.Name("ConversationListSortData"), object: nil)
+                self?.conversationsListDelegate?.sortConversationData()
             } else {
                 let alertController = UIAlertController(title: "Error", message: "message didn't send", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Done", style: .destructive))
@@ -106,9 +107,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("ConversationReloadData"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("ConversationTurnSendOff"), object: nil)
-        
+    
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -116,24 +115,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         view.gestureRecognizers?.removeAll()
     }
     
-    
-    @objc private func reloadData() {
-        DispatchQueue.main.async {
-            self.conversationTableView.reloadData()
-        }
-    }
-    
-    @objc private func lockTheSendButton() {
-        DispatchQueue.main.async {
-            self.sendButton.isEnabled = false
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ConversationReloadData"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(lockTheSendButton), name: Notification.Name("ConversationTurnSendOff"), object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -161,3 +145,18 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
  
 
 }
+
+extension ConversationViewController: MPCConversationDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.conversationTableView.reloadData()
+        }
+    }
+    
+    func lockTheSendButton() {
+        DispatchQueue.main.async {
+            self.sendButton.isEnabled = false
+        }
+    }
+}
+

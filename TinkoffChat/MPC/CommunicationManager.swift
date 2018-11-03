@@ -11,19 +11,11 @@ import UIKit
 class CommunicationManager: CommunicatorDelegate {
     
     var conversations: [String: [Conversation]] = [:]
+    var conversationsListDelegate: MPCConversationsListDelegate?
+    var conversationDelegate: MPCConversationDelegate?
     
     init() {
         conversations["online"] = [Conversation]()
-        NotificationCenter.default.addObserver(self, selector: #selector(sortConversationData), name: Notification.Name("ConversationListSortData"), object: nil)
-        
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("ConversationListSortData"), object: nil)
-    }
-    
-    @objc func sortConversationData() {
-        conversations["online"]?.sort(by: Conversation.sortByDate)
     }
     
     func didFoundUser(userID: String, userName: String?) {
@@ -34,16 +26,15 @@ class CommunicationManager: CommunicatorDelegate {
         conversations["online"]?.append(Conversation(id: userID, name: userName, message: nil, messages: [MessageModel](), date: nil, online: true, hasUnreadMessage: false))
         conversations["online"]?.sort(by: Conversation.sortByDate)
         
-        NotificationCenter.default.post(name: Notification.Name("ConversationsListReloadData"), object: nil)
+        conversationsListDelegate?.reloadData()
     }
     
     func didLostUser(userID: String) {
         if let indexOf = conversations["online"]?.index(where: {(item) -> Bool in item.id == userID}) {
             conversations["online"]?.remove(at: indexOf)
             
-            NotificationCenter.default.post(name: Notification.Name("ConversationsListReloadData"), object: nil)
-            
-            NotificationCenter.default.post(name: Notification.Name("ConversationTurnSendOff"), object: nil)
+            conversationsListDelegate?.reloadData()
+            conversationDelegate?.lockTheSendButton()
         }
     }
     
@@ -69,9 +60,8 @@ class CommunicationManager: CommunicatorDelegate {
             conversationsOnline[indexOf].message = conversationsOnline[indexOf].messages.first?.textMessage
             
             conversationsOnline.sort(by: Conversation.sortByDate)
-            
-            NotificationCenter.default.post(name: Notification.Name("ConversationsListReloadData"), object: nil)
-            NotificationCenter.default.post(name: Notification.Name("ConversationReloadData"), object: nil)
+            conversationsListDelegate?.reloadData()
+            conversationDelegate?.reloadData()
         }
     }
     
