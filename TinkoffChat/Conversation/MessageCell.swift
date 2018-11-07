@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol MessageCellConfiguration: class{
+protocol MessageCellConfiguration: class {
     var textMessage: String? {get set}
 }
 
 class MessageCell: UITableViewCell, MessageCellConfiguration {
 
     var textMessage: String? {
-        didSet{
+        didSet {
             if let strongTextMessage = textMessage {
                 textMessageLabel?.text = strongTextMessage
             } else {
@@ -23,7 +23,7 @@ class MessageCell: UITableViewCell, MessageCellConfiguration {
             }
         }
     }
-    
+
     @IBOutlet private var textMessageLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

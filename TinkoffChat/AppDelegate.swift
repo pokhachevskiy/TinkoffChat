@@ -14,14 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UINavigationBar.appearance().tintColor = UIColor.black
         if let color = UserDefaults.standard.colorForKey(key: "Theme") {
             UINavigationBar.appearance().barTintColor = color
             UINavigationBar.appearance().backgroundColor = color
         }
-        
+
         return true
     }
 
@@ -38,14 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-//        self.saveContext()
     }
 }
 
 extension UserDefaults {
-    
+
     func setColor(color: UIColor?, forKey key: String) {
         var colorData: NSData?
         if let color = color {
@@ -53,7 +50,7 @@ extension UserDefaults {
         }
         set(colorData, forKey: key)
     }
-    
+
     func colorForKey(key: String) -> UIColor? {
         var color: UIColor?
         if let colorData = data(forKey: key) {
@@ -61,5 +58,5 @@ extension UserDefaults {
         }
         return color
     }
-    
+
 }

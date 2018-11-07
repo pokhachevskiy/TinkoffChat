@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func println(string : String) {
+func println(string: String) {
     #if DEBUG
     print(string)
     #endif

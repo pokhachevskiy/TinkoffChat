@@ -12,7 +12,6 @@ struct ThemesStructureSwift {
     struct Theme {
         let navigationBarColor: UIColor
     }
-    
     let theme1: Theme
     let theme2: Theme
     let theme3: Theme

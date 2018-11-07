@@ -10,8 +10,7 @@ import Foundation
 class MessageModel: MessageCellConfiguration {
     var textMessage: String?
     var isIncoming: Bool
-    
-    
+
     init(textMessage: String, isIncoming: Bool) {
         self.textMessage = textMessage
         self.isIncoming = isIncoming

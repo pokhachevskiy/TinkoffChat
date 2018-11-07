@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MPCConversationDelegate {
+protocol MPCConversationDelegate: class {
     func reloadData()
     func lockTheSendButton()
 }

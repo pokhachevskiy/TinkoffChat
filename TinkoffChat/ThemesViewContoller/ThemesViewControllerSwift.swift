@@ -10,12 +10,11 @@ import UIKit
 
 class ThemesViewControllerSwift: UIViewController {
 
-    typealias GetTheme = (ThemesStructureSwift.Theme) -> ()
-    
+    typealias GetTheme = (ThemesStructureSwift.Theme) -> Void
     var closure: GetTheme?
-    
-    var themes = ThemesStructureSwift(theme1: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)), theme2: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 0.2941176471, green: 0.2941176471, blue: 0.2941176471, alpha: 1)), theme3: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 0.7725490196, green: 0.7019607843, blue: 0.3450980392, alpha: 1)))
-    
+    var themes = ThemesStructureSwift(theme1: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+                                      theme2: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 0.2941176471, green: 0.2941176471, blue: 0.2941176471, alpha: 1)),
+                                      theme3: ThemesStructureSwift.Theme.init(navigationBarColor: #colorLiteral(red: 0.7725490196, green: 0.7019607843, blue: 0.3450980392, alpha: 1)))
     override func viewDidLoad() {
         super.viewDidLoad()
         if let color = UserDefaults.standard.colorForKey(key: "Theme") {
@@ -23,10 +22,8 @@ class ThemesViewControllerSwift: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-    
     @IBAction func themeButtonPressed(_ sender: UIButton) {
         if let buttonTitle = sender.titleLabel?.text {
-            
             switch buttonTitle {
             case "Светлая":
                 let theme = themes.theme1
@@ -45,7 +42,6 @@ class ThemesViewControllerSwift: UIViewController {
             }
         }
     }
-    
     @IBAction func doneTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

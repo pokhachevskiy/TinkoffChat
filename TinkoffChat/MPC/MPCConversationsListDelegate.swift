@@ -7,7 +7,8 @@
 //
 
 import Foundation
-protocol MPCConversationsListDelegate {
+
+protocol MPCConversationsListDelegate: class {
     func reloadData()
     func sortConversationData()
 }

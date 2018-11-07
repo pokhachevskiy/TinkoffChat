@@ -20,8 +20,8 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var textMessage: UILabel!
-    
-    var name: String?{
+
+    var name: String? {
         didSet {
             if let strongName = name {
                 nameLabel?.text = strongName
@@ -30,7 +30,7 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             }
         }
     }
-    var message: String?{
+    var message: String? {
         didSet {
             if let strongTextMessage = message {
                 self.textMessage.text = strongTextMessage
@@ -57,8 +57,8 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             }
         }
     }
-    var online: Bool = false{
-        didSet{
+    var online: Bool = false {
+        didSet {
             if online {
                 self.backgroundColor = UIColor(rgb: 0xffffe5)
             } else {
@@ -66,8 +66,8 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             }
         }
     }
-    var hasUnreadMessage: Bool = false{
-        didSet{
+    var hasUnreadMessage: Bool = false {
+        didSet {
             if message == nil {
                 return
             }
@@ -79,15 +79,18 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
         }
     }
 
-    func configureForLabels (name: String?, textLastMessage: String?, dateLastMessage: Date?, isOnline: Bool, hasUnreadMessage: Bool){
+    func configureForLabels (name: String?,
+                             textLastMessage: String?,
+                             dateLastMessage: Date?,
+                             isOnline: Bool,
+                             hasUnreadMessage: Bool) {
         self.name = name
         self.message = textLastMessage
         self.date = dateLastMessage
         self.online = isOnline
         self.hasUnreadMessage = hasUnreadMessage
     }
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -95,22 +98,21 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
-    
-}
 
+}
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
+
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
-    
+
     convenience init(rgb: Int) {
         self.init(
             red: (rgb >> 16) & 0xFF,

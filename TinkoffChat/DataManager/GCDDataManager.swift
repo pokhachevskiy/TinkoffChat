@@ -9,25 +9,25 @@
 import UIKit
 import Foundation
 
-class GCDDataManager : DataManagerProtocol{
-    
+class GCDDataManager: DataManagerProtocol {
+
     let profileHandler: ProfileHandler = ProfileHandler()
-    let queue = DispatchQueue(label:"com.pokhachevskiy.TinkoffChat" ,qos: .userInteractive)
-    
-    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ()) {
+    let queue = DispatchQueue(label: "com.pokhachevskiy.TinkoffChat", qos: .userInteractive)
+
+    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> Void) {
         queue.async {
             let saveSucceeded = self.profileHandler.saveData(profile: profile)
-        
+
             DispatchQueue.main.async {
                 completion(saveSucceeded)
             }
         }
     }
-    
-    func loadData(completion: @escaping (_ profile: Profile?) -> ()) {
+
+    func loadData(completion: @escaping (_ profile: Profile?) -> Void) {
         queue.async {
             let retrievedProfile = self.profileHandler.loadData()
-            
+
             DispatchQueue.main.async {
                 completion(retrievedProfile)
             }

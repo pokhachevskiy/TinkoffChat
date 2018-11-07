@@ -7,12 +7,11 @@
 //
 
 import Foundation
-class CoreDataManager: DataManagerProtocol{
-    
+class CoreDataManager: DataManagerProtocol {
+
     private let coreDataStack = CoreDataStack()
-    
-    
-    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> ()) {
+
+    func saveData(profile: Profile, completion: @escaping (_ success: Bool) -> Void) {
         let saveContext = coreDataStack.saveContext
         saveContext.perform {
             let appUser = AppUser.findOrInsertAppUser(in: saveContext)
@@ -21,15 +20,15 @@ class CoreDataManager: DataManagerProtocol{
             if let picture = profile.image {
                 appUser?.userImage = picture.jpegData(compressionQuality: 100)
             }
-            self.coreDataStack.performSave(with: saveContext){
+            self.coreDataStack.performSave(with: saveContext) {
                 DispatchQueue.main.async {
                     completion(true)
                 }
             }
         }
     }
-    
-    func loadData(completion: @escaping (_ profile: Profile?) -> ()) {
+
+    func loadData(completion: @escaping (_ profile: Profile?) -> Void) {
         let profile: Profile = Profile()
         let mainContext = self.coreDataStack.mainContext
         mainContext.perform {
@@ -37,7 +36,7 @@ class CoreDataManager: DataManagerProtocol{
                 completion(nil)
                 return
             }
-            
+
             profile.name = appUser.userName
             profile.info = appUser.userInfo
             if let picture = appUser.userImage {
