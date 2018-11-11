@@ -10,37 +10,43 @@ import UIKit
 
 class CommunicationManager: CommunicatorDelegate {
 
-    var conversations: [String: [Conversation]] = [:]
-    weak var conversationsListDelegate: MPCConversationsListDelegate?
-    weak var conversationDelegate: MPCConversationDelegate?
-
-    init() {
-        conversations["online"] = [Conversation]()
-    }
-
     func didFoundUser(userID: String, userName: String?) {
-        guard conversations["online"]?.index(where: {(item) -> Bool in item.id == userID}) == nil else {
+        let conversation = Conversation.withId(conversationId: userID)
+        guard conversation == nil else {
+            conversation?.isOnline = true
+            CoreDataService.sharedService.save()
             return
         }
 
-        conversations["online"]?.append(Conversation(id: userID,
-                                                     name: userName,
-                                                     message: nil,
-                                                     messages: [MessageModel](),
-                                                     date: nil,
-                                                     online: true,
-                                                     hasUnreadMessage: false))
-        conversations["online"]?.sort(by: Conversation.sortByDate)
+        let user: User = CoreDataService.sharedService.add(.user)
+        user.userId = userID
+        user.name = userName
+        user.isOnline = true
 
-        conversationsListDelegate?.reloadData()
+        let chat: Conversation = CoreDataService.sharedService.add(.conversation)
+
+        chat.conversationId = userID
+        chat.receiver = user
+        chat.hasUnreadMessage = false
+        chat.appUser = nil
+        chat.lastMessage = nil
+        chat.isOnline = true
+
+        user.addToConversations(chat)
+
+        CoreDataService.sharedService.save()
     }
 
     func didLostUser(userID: String) {
-        if let indexOf = conversations["online"]?.index(where: {(item) -> Bool in item.id == userID}) {
-            conversations["online"]?.remove(at: indexOf)
-
-            conversationsListDelegate?.reloadData()
-            conversationDelegate?.lockTheSendButton()
+        guard let user = User.withId(userId: userID),
+            let conversation = Conversation.withId(conversationId: userID) else {
+            return
+        }
+        if conversation.lastMessage != nil {
+            conversation.isOnline = false
+        } else {
+            CoreDataService.sharedService.delete(conversation)
+            CoreDataService.sharedService.delete(user)
         }
     }
 
@@ -61,17 +67,22 @@ class CommunicationManager: CommunicatorDelegate {
     }
 
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
-        guard var conversationsOnline = conversations["online"] else {
+        guard let conversation = Conversation.withId(conversationId: fromUser) else {
             return
         }
-        if let indexOf = conversationsOnline.index(where: {(item) -> Bool in item.id == fromUser}) {
-            conversationsOnline[indexOf].messages.insert(MessageModel(textMessage: text, isIncoming: true), at: 0)
-            conversationsOnline[indexOf].hasUnreadMessage = true
-            conversationsOnline[indexOf].message = conversationsOnline[indexOf].messages.first?.textMessage
-            conversationsOnline.sort(by: Conversation.sortByDate)
-            conversationsListDelegate?.reloadData()
-            conversationDelegate?.reloadData()
-        }
+        print(fromUser)
+
+        let message: Message = CoreDataService.sharedService.add(.message)
+        message.messageId = Message.generateMessageId()
+        message.isIncoming = true
+        message.textMessage = text
+        message.date = Date()
+        message.conversation = conversation
+        message.lastMessage = conversation
+
+        conversation.hasUnreadMessage = true
+
+        CoreDataService.sharedService.save()
     }
 
 }

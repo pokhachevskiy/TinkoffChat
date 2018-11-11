@@ -7,34 +7,49 @@
 //
 
 import UIKit
-
-class MessageClass {
-    var name: String?
-    var message: String?
-    var date: Date?
-    var online: Bool
-    var hasUnreadMessage: Bool
-    init(name: String, message: String, date: Date, online: Bool, hasUnreadMessage: Bool) {
-        self.name = name
-        self.message = message
-        self.date = date
-        self.online = online
-        self.hasUnreadMessage = hasUnreadMessage
-    }
-    // init without message
-    init(name: String, date: Date, online: Bool, hasUnreadMessage: Bool) {
-        self.name = name
-        self.date = date
-        self.online = online
-        self.hasUnreadMessage = hasUnreadMessage
-    }
-}
+import CoreData
 
 class ConversationsListViewController: UITableViewController {
     private var communicator: Communicator = MultipeerCommunicator()
     private var communicationManager = CommunicationManager()
+    private var frcManager = FRCManager()
+    private var fetchedResultsController: NSFetchedResultsController<Conversation>!
+    private var controlsDelegate: LetControlsDelegate?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        communicator.delegate = communicationManager
+
+        let fetchRequest: NSFetchRequest<Conversation> = CoreDataService.sharedService.getAll(.conversation)
+
+        let onlineSortDescriptor = NSSortDescriptor(key: "isOnline", ascending: false)
+        let dateSortDescriptor = NSSortDescriptor(key: "lastMessage.date", ascending: false)
+        let nameSortDescriptor = NSSortDescriptor(key: "receiver.name", ascending: true)
+
+        fetchRequest.sortDescriptors = [onlineSortDescriptor, dateSortDescriptor, nameSortDescriptor]
+
+        frcManager.delegate = self.tableView
+
+        fetchedResultsController = CoreDataService.sharedService.setupFRC(fetchRequest, frcManager: frcManager)
+        CoreDataService.sharedService.fetchData(fetchedResultsController)
+
+        fetchedResultsController?.fetchedObjects?.forEach({ $0.isOnline = false })
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return communicationManager.conversations[status[section]!]?.count ?? 0
+        guard let sections = fetchedResultsController?.sections else {
+            return 0
+        }
+
+        return sections[section].numberOfObjects
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard let sectionsCount = fetchedResultsController?.sections?.count else {
+            return 0
+        }
+
+        return sectionsCount
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,12 +58,23 @@ class ConversationsListViewController: UITableViewController {
             else {
                 return ConversationCell()
         }
-        let receivedConversation = communicationManager.conversations[status[indexPath.section]!]![indexPath.row]
-        cell.name = receivedConversation.name
-        cell.message = receivedConversation.message
-        cell.date = receivedConversation.date
-        cell.online = receivedConversation.online
-        cell.hasUnreadMessage = receivedConversation.hasUnreadMessage
+
+        if let retrievedConversation = fetchedResultsController?.object(at: indexPath) {
+            if let receiver = retrievedConversation.receiver {
+                cell.name = receiver.name
+            }
+
+            cell.online = retrievedConversation.isOnline
+            cell.date = retrievedConversation.lastMessage?.date ?? nil
+            cell.message = retrievedConversation.lastMessage?.textMessage ?? nil
+            cell.hasUnreadMessage = retrievedConversation.hasUnreadMessage
+
+            if retrievedConversation.isOnline && retrievedConversation == controlsDelegate?.conversation {
+                controlsDelegate?.turnControlsOn()
+            } else {
+                controlsDelegate?.turnControlsOff()
+            }
+        }
         return cell
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -61,16 +87,9 @@ class ConversationsListViewController: UITableViewController {
             return "Error"
         }
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        communicator.delegate = communicationManager
-        communicationManager.conversationsListDelegate = self
-    }
+
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        super.viewWillAppear(animated)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -89,7 +108,6 @@ class ConversationsListViewController: UITableViewController {
             UserDefaults.standard.setColor(color: selectedTheme.navigationBarColor, forKey: "Theme")
         }
     }
-    let status = [0: "online", 1: "offline"]
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -99,12 +117,10 @@ class ConversationsListViewController: UITableViewController {
             if let cell = sender as? ConversationCell,
                 let conversationViewController = segue.destination as? ConversationViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
+                    controlsDelegate = conversationViewController
+                    controlsDelegate?.conversation = fetchedResultsController?.object(at: indexPath)
                     conversationViewController.loadData(with: cell)
                     conversationViewController.communicator = communicator
-                    conversationViewController.conversation =
-                        communicationManager.conversations[status[indexPath.section]!]?[indexPath.row]
-                    conversationViewController.conversationsListDelegate = self
-                    communicationManager.conversationDelegate = conversationViewController
                 }
             }
         case "toThemes":
@@ -129,13 +145,6 @@ extension ConversationsListViewController: ​ThemesViewControllerDelegate {
     }
 }
 
-extension ConversationsListViewController: MPCConversationsListDelegate {
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    func sortConversationData() {
-        communicationManager.conversations["online"]?.sort(by: Conversation.sortByDate)
-    }
+extension UITableView: ConversationDelegate {
+    // this stub fixes line: "frcManager.delegate = self"
 }

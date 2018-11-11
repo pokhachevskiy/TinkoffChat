@@ -38,7 +38,7 @@ MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDele
     }
 
     override init() {
-        peer = MCPeerID(displayName: UIDevice.current.name)
+        peer = MCPeerID(displayName: UIDevice.current.identifierForVendor!.uuidString)
 
         online = true
 
@@ -84,6 +84,13 @@ MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDele
                  withName streamName: String,
                  fromPeer peerID: MCPeerID) {
 
+    }
+
+    func session(_ session: MCSession,
+                 didReceiveCertificate certificate: [Any]?,
+                 fromPeer peerID: MCPeerID,
+                 certificateHandler: @escaping (Bool) -> Void) {
+        certificateHandler(true)
     }
 
     func session(_ session: MCSession,

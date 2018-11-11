@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ConversationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
@@ -16,13 +17,15 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             conversationTableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         }
     }
+
+    private var fetchedResultsController: NSFetchedResultsController<Message>!
+    private var frcManager = FRCManager()
+
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var textView: UITextView!
 
     var communicator: Communicator!
     var conversation: Conversation!
-    weak var conversationsListDelegate: MPCConversationsListDelegate?
-//    var communicationManager: CommunicationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,22 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         self.conversationTableView.dataSource = self
         self.conversationTableView.delegate = self
         self.textView.delegate = self
+
+        let fetchRequest: NSFetchRequest<Message> = CoreDataService
+            .sharedService
+            .fetchRequest(.messagesByConversation,
+                          dictionary: ["conversationId":
+                            conversation.conversationId!])!
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        frcManager.delegate = conversationTableView
+        fetchedResultsController = CoreDataService.sharedService.setupFRC(fetchRequest, frcManager: frcManager)
+        CoreDataService.sharedService.fetchData(fetchedResultsController!)
+
+        if let count = conversation.messages?.count, count > 0 {
+            conversationTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
 
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = textView.frame.height/2
@@ -56,15 +75,23 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        guard let sections = fetchedResultsController?.sections?.count else {
+            return 0
+        }
+
+        return sections
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversation.messages.count
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+
+        return sections[section].numberOfObjects
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = conversation.messages[indexPath.row]
+        let message = fetchedResultsController.object(at: indexPath)
         var identifier = ""
         if message.isIncoming {
             identifier = "IncomingMessageCell"
@@ -76,23 +103,28 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             return MessageCell()
         }
         cell.textMessage = message.textMessage
+        cell.isIncoming = message.isIncoming
         cell.transform = CGAffineTransform(scaleX: 1, y: -1)
         return cell
     }
 
     @IBAction func sendButtonPressed(_ sender: Any) {
-        guard let text = textView.text, !text.isEmpty else { return }
+        guard let text = textView.text, let receiver = conversation.receiver?.userId, !text.isEmpty else { return }
 
-        communicator.sendMessage(string: text, to: conversation.id) { [weak self] success, _ in
+        communicator.sendMessage(string: text, to: receiver) { [weak self] success, _ in
             if success {
                 self?.textView.text = ""
 
-                self?.conversation.date = Date()
-                self?.conversation.message = text
-                self?.conversation.messages.insert(MessageModel(textMessage: text, isIncoming: false), at: 0)
+                let message: Message = CoreDataService.sharedService.add(.message)
+                message.messageId = Message.generateMessageId()
+                message.date = Date()
+                message.conversation = self?.conversation
+                message.isIncoming = false
+                message.textMessage = text
 
-                self?.conversationTableView.reloadData()
-                self?.conversationsListDelegate?.sortConversationData()
+                message.lastMessage = self?.conversation
+
+                CoreDataService.sharedService.save()
             } else {
                 let alertController = UIAlertController(title: "Error",
                                                         message: "message didn't send",
@@ -115,6 +147,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
 
         conversation.hasUnreadMessage = false
+        CoreDataService.sharedService.save()
         view.gestureRecognizers?.removeAll()
     }
 
@@ -129,6 +162,12 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
                                                selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+
+        if self.conversation.isOnline {
+            self.turnControlsOn()
+        } else {
+            self.turnControlsOff()
+        }
     }
 
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -153,14 +192,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
 
 }
 
-extension ConversationViewController: MPCConversationDelegate {
-    func reloadData() {
+extension ConversationViewController: LetControlsDelegate {
+    func turnControlsOn() {
         DispatchQueue.main.async {
-            self.conversationTableView.reloadData()
+            self.sendButton.isEnabled = true
         }
     }
 
-    func lockTheSendButton() {
+    func turnControlsOff() {
         DispatchQueue.main.async {
             self.sendButton.isEnabled = false
         }

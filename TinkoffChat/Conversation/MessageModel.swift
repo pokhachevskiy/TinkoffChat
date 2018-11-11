@@ -7,12 +7,10 @@
 //
 
 import Foundation
-class MessageModel: MessageCellConfiguration {
-    var textMessage: String?
-    var isIncoming: Bool
-
-    init(textMessage: String, isIncoming: Bool) {
-        self.textMessage = textMessage
-        self.isIncoming = isIncoming
+extension Message: MessageCellConfiguration {
+    class func generateMessageId() -> String {
+        return "\(arc4random_uniform(UINT32_MAX))+\(Date.timeIntervalSinceReferenceDate)"
+            .data(using: .utf8)!
+            .base64EncodedString()
     }
 }

@@ -54,6 +54,7 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
                     ddmmFormatter.dateFormat = "dd MMM"
                     dateTime?.text = ddmmFormatter.string(from: strongDate)
                 }
+                dateTime.isHidden = false
             }
         }
     }

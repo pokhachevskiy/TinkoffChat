@@ -10,9 +10,11 @@ import UIKit
 
 protocol MessageCellConfiguration: class {
     var textMessage: String? {get set}
+    var isIncoming: Bool {get set}
 }
 
 class MessageCell: UITableViewCell, MessageCellConfiguration {
+    var isIncoming = false
 
     var textMessage: String? {
         didSet {
