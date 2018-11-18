@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageOut" rowHeight="167" id="0RM-hw-MYo" customClass="MessageCell" customModule="TinkoffChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0RM-hw-MYo" id="kKm-7Z-clE">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="166.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kdg-8X-TLv">
+                        <rect key="frame" x="335" y="0.0" width="32" height="159"/>
+                        <color key="backgroundColor" red="0.0" green="0.56791417740000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hyi-ww-4nW">
+                        <rect key="frame" x="351" y="16" width="0.0" height="127"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kdg-8X-TLv" firstAttribute="trailingMargin" secondItem="Hyi-ww-4nW" secondAttribute="trailing" constant="8" id="MrZ-8U-tnp"/>
+                    <constraint firstItem="kdg-8X-TLv" firstAttribute="bottomMargin" secondItem="Hyi-ww-4nW" secondAttribute="bottom" constant="8" id="NiB-IM-jXu"/>
+                    <constraint firstItem="Hyi-ww-4nW" firstAttribute="leading" secondItem="kdg-8X-TLv" secondAttribute="leadingMargin" constant="8" id="UQr-hD-wEY"/>
+                    <constraint firstItem="kdg-8X-TLv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kKm-7Z-clE" secondAttribute="leading" constant="150" id="Y8D-Pk-bvv"/>
+                    <constraint firstItem="Hyi-ww-4nW" firstAttribute="top" secondItem="kdg-8X-TLv" secondAttribute="topMargin" constant="8" id="ZVM-AI-h1a"/>
+                    <constraint firstItem="kdg-8X-TLv" firstAttribute="top" secondItem="kKm-7Z-clE" secondAttribute="top" id="iCl-rv-xum"/>
+                    <constraint firstAttribute="bottom" secondItem="kdg-8X-TLv" secondAttribute="bottom" constant="8" id="mA8-bG-4v3"/>
+                    <constraint firstAttribute="trailing" secondItem="kdg-8X-TLv" secondAttribute="trailing" constant="8" id="mVE-R9-O6L"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageLabel" destination="Hyi-ww-4nW" id="TZJ-Gv-u5J"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
