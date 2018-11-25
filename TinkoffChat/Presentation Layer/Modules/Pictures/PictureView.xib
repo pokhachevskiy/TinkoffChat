@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PictureViewController" customModule="TinkoffChat" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="5xL-1p-Q7V" id="1EY-AF-ZXL"/>
+                <outlet property="spinner" destination="K8p-Wq-cYd" id="Iz8-fi-iVq"/>
+                <outlet property="view" destination="iN0-l3-epB" id="434-6p-ymW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5xL-1p-Q7V">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tWG-zD-qLK">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-Wq-cYd">
+                    <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                    <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <viewLayoutGuide key="safeArea" id="imA-MW-Jmw"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5xL-1p-Q7V" firstAttribute="top" secondItem="S2S-s8-USA" secondAttribute="top" id="9MJ-8i-SFJ"/>
+                <constraint firstItem="K8p-Wq-cYd" firstAttribute="centerY" secondItem="5xL-1p-Q7V" secondAttribute="centerY" id="Uff-r5-TcF"/>
+                <constraint firstItem="S2S-s8-USA" firstAttribute="trailing" secondItem="5xL-1p-Q7V" secondAttribute="trailing" id="dgs-oI-wJg"/>
+                <constraint firstItem="5xL-1p-Q7V" firstAttribute="leading" secondItem="S2S-s8-USA" secondAttribute="leading" id="mnc-GZ-XoM"/>
+                <constraint firstItem="K8p-Wq-cYd" firstAttribute="centerX" secondItem="5xL-1p-Q7V" secondAttribute="centerX" id="qGt-Vr-wD1"/>
+                <constraint firstItem="S2S-s8-USA" firstAttribute="bottom" secondItem="5xL-1p-Q7V" secondAttribute="bottom" id="xoY-Bf-Qtt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="S2S-s8-USA"/>
+            <point key="canvasLocation" x="142" y="149"/>
+        </view>
+    </objects>
+</document>

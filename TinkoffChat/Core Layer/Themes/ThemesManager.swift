@@ -16,19 +16,19 @@ protocol IThemesManager {
 }
 
 class ThemesManager: IThemesManager {
-  
+
   func apply(_ theme: UIColor, save: Bool) {
     DispatchQueue.global(qos: .utility).async {
       if save {
         UserDefaults.standard.setColor(color: theme, forKey: "Theme")
       }
-      
+
       DispatchQueue.main.async {
         UINavigationBar.appearance().backgroundColor = theme
         UINavigationBar.appearance().barTintColor = theme
         UINavigationBar.appearance().tintColor = UIColor.black
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-      
+
         let windows = UIApplication.shared.windows as [UIWindow]
         for window in windows {
           let subviews = window.subviews as [UIView]
@@ -40,8 +40,7 @@ class ThemesManager: IThemesManager {
       }
     }
   }
-  
-  
+
   func loadAndApply() {
     DispatchQueue.global(qos: .userInteractive).async {
       if let theme = UserDefaults.standard.colorForKey(key: "Theme") {
@@ -51,5 +50,5 @@ class ThemesManager: IThemesManager {
       }
     }
   }
-  
+
 }

@@ -11,6 +11,7 @@ protocol ICoreAssembly {
   var dataManager: IDataManager { get }
   var themesManager: IThemesManager { get }
   var coreDataStub: ICoreDataStack { get }
+  var requestSender: IRequestSender { get }
 }
 
 class CoreAssembly: ICoreAssembly {
@@ -19,4 +20,5 @@ class CoreAssembly: ICoreAssembly {
   lazy var dataManager: IDataManager = coreDataManager
   lazy var coreDataStub: ICoreDataStack = coreDataManager
   private let coreDataManager = CoreDataManager()
+  lazy var requestSender: IRequestSender = RequestSender()
 }

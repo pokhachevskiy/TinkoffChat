@@ -7,7 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A561E44F21A1E910000B4FC2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A561E44E21A1E910000B4FC2 /* Default-568h@2x.png */; };
+		A575FC0821A876F900DECDC7 /* PictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A575FC0721A876F900DECDC7 /* PictureView.xib */; };
+		A575FC0B21A878DD00DECDC7 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */; };
+		A575FC0F21A8808100DECDC7 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0D21A8808100DECDC7 /* PictureCell.swift */; };
+		A575FC1021A8808100DECDC7 /* PictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A575FC0E21A8808100DECDC7 /* PictureCell.xib */; };
+		A575FC1221A880F000DECDC7 /* PictureProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1121A880F000DECDC7 /* PictureProtocol.swift */; };
+		A575FC1421A8838900DECDC7 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1321A8838900DECDC7 /* Picture.swift */; };
+		A575FC1621A884FF00DECDC7 /* PictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1521A884FF00DECDC7 /* PictureModel.swift */; };
+		A575FC1921A8857600DECDC7 /* PictureServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1821A8857600DECDC7 /* PictureServiceProtocols.swift */; };
+		A575FC1B21A8859500DECDC7 /* PictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1A21A8859500DECDC7 /* PictureService.swift */; };
+		A575FC1E21A8865300DECDC7 /* NetworkingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1D21A8865300DECDC7 /* NetworkingProtocols.swift */; };
+		A575FC2121A886A600DECDC7 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2021A886A600DECDC7 /* RequestSender.swift */; };
+		A575FC2321A886D100DECDC7 /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2221A886D100DECDC7 /* RequestsFactory.swift */; };
+		A575FC2621A8877500DECDC7 /* SearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2521A8877500DECDC7 /* SearchParser.swift */; };
+		A575FC2821A887DE00DECDC7 /* LoadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2721A887DE00DECDC7 /* LoadParser.swift */; };
+		A575FC2A21A8880B00DECDC7 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2921A8880B00DECDC7 /* Requests.swift */; };
 		DE6AE853204855F400A567FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6AE852204855F400A567FD /* Images.xcassets */; };
 		DE804EC120757D8600C6EF26 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE804EC020757D8600C6EF26 /* Communicator.swift */; };
 		DE8975842042FDB100932176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8975832042FDB100932176 /* AppDelegate.swift */; };
@@ -46,7 +60,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A561E44E21A1E910000B4FC2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.debug.xcconfig"; sourceTree = "<group>"; };
+		A575FC0721A876F900DECDC7 /* PictureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureView.xib; sourceTree = "<group>"; };
+		A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		A575FC0D21A8808100DECDC7 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
+		A575FC0E21A8808100DECDC7 /* PictureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCell.xib; sourceTree = "<group>"; };
+		A575FC1121A880F000DECDC7 /* PictureProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureProtocol.swift; sourceTree = "<group>"; };
+		A575FC1321A8838900DECDC7 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		A575FC1521A884FF00DECDC7 /* PictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureModel.swift; sourceTree = "<group>"; };
+		A575FC1821A8857600DECDC7 /* PictureServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureServiceProtocols.swift; sourceTree = "<group>"; };
+		A575FC1A21A8859500DECDC7 /* PictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureService.swift; sourceTree = "<group>"; };
+		A575FC1D21A8865300DECDC7 /* NetworkingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocols.swift; sourceTree = "<group>"; };
+		A575FC2021A886A600DECDC7 /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		A575FC2221A886D100DECDC7 /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
+		A575FC2521A8877500DECDC7 /* SearchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParser.swift; sourceTree = "<group>"; };
+		A575FC2721A887DE00DECDC7 /* LoadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadParser.swift; sourceTree = "<group>"; };
+		A575FC2921A8880B00DECDC7 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		DE6AE852204855F400A567FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DE77E5EA205EF2500066007D /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		DE804EC020757D8600C6EF26 /* Communicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
@@ -85,6 +114,7 @@
 		DEF617912063E16300523C2B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DEFD0470205144DA000719BD /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		DEFD04762051C6E1000719BD /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		E4DC4C488DEB6B35D5B5A702 /* Pods-TinkoffChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +128,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FFE7CA0B4EA7CD02A24B1AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A575FC0921A878AB00DECDC7 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC0C21A8805E00DECDC7 /* Cell */,
+				A575FC0721A876F900DECDC7 /* PictureView.xib */,
+				A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */,
+				A575FC1121A880F000DECDC7 /* PictureProtocol.swift */,
+				A575FC1321A8838900DECDC7 /* Picture.swift */,
+				A575FC1521A884FF00DECDC7 /* PictureModel.swift */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
+		A575FC0C21A8805E00DECDC7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC0D21A8808100DECDC7 /* PictureCell.swift */,
+				A575FC0E21A8808100DECDC7 /* PictureCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A575FC1721A8856200DECDC7 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC1821A8857600DECDC7 /* PictureServiceProtocols.swift */,
+				A575FC1A21A8859500DECDC7 /* PictureService.swift */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
+		A575FC1C21A885FE00DECDC7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC2421A8875B00DECDC7 /* Parsers */,
+				A575FC1D21A8865300DECDC7 /* NetworkingProtocols.swift */,
+				A575FC2021A886A600DECDC7 /* RequestSender.swift */,
+				A575FC2221A886D100DECDC7 /* RequestsFactory.swift */,
+				A575FC2921A8880B00DECDC7 /* Requests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A575FC2421A8875B00DECDC7 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC2521A8877500DECDC7 /* SearchParser.swift */,
+				A575FC2721A887DE00DECDC7 /* LoadParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		DE8975772042FDB100932176 = {
 			isa = PBXGroup;
 			children = (
 				DE8975822042FDB100932176 /* TinkoffChat */,
 				DE8975812042FDB100932176 /* Products */,
+				F32B3D99E29C8E4A0398A91D /* Pods */,
+				2FFE7CA0B4EA7CD02A24B1AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +218,6 @@
 				DE89758C2042FDB100932176 /* LaunchScreen.storyboard */,
 				DEF617902063E15000523C2B /* Extensions */,
 				DE6AE852204855F400A567FD /* Images.xcassets */,
-				A561E44E21A1E910000B4FC2 /* Default-568h@2x.png */,
 				DE89758F2042FDB100932176 /* Info.plist */,
 			);
 			path = TinkoffChat;
@@ -154,6 +244,7 @@
 		DEA1CDB02092627900916FFE /* Core Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A575FC1C21A885FE00DECDC7 /* Networking */,
 				DEA1CDCA20927C7C00916FFE /* Themes */,
 				DEA1CDBE209265F300916FFE /* CoreData */,
 				DEA1CDBD209265DE00916FFE /* Multipeer */,
@@ -173,6 +264,7 @@
 		DEA1CDB3209262ED00916FFE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A575FC0921A878AB00DECDC7 /* Pictures */,
 				DEA1CDE82092940600916FFE /* ConversationsList */,
 				DEA1CDDA2092860100916FFE /* Conversation */,
 				DEA1CDB7209264A400916FFE /* Profile */,
@@ -192,6 +284,7 @@
 		DEA1CDB52092632E00916FFE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A575FC1721A8856200DECDC7 /* Pictures */,
 				DEA1CDD120927FAA00916FFE /* Themes */,
 				DEA1CDC0209267A300916FFE /* FRC */,
 			);
@@ -319,6 +412,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F32B3D99E29C8E4A0398A91D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */,
+				E4DC4C488DEB6B35D5B5A702 /* Pods-TinkoffChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,9 +428,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE8975922042FDB100932176 /* Build configuration list for PBXNativeTarget "TinkoffChat" */;
 			buildPhases = (
+				55887C014E8EBB6BADF49256 /* [CP] Check Pods Manifest.lock */,
 				DE89757C2042FDB100932176 /* Sources */,
 				DE89757D2042FDB100932176 /* Frameworks */,
 				DE89757E2042FDB100932176 /* Resources */,
+				A566A0D421AAC67D005D0D9D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -382,10 +486,11 @@
 				DE6AE853204855F400A567FD /* Images.xcassets in Resources */,
 				DEA1CDE520928E8C00916FFE /* IncomingMessageCell.xib in Resources */,
 				DE89758E2042FDB100932176 /* LaunchScreen.storyboard in Resources */,
-				A561E44F21A1E910000B4FC2 /* Default-568h@2x.png in Resources */,
 				DEA1CDE420928E8C00916FFE /* OutgoingMessageCell.xib in Resources */,
 				DEA1CDEA2092976600916FFE /* ConversationCell.xib in Resources */,
 				DEA1CDFD2092BAE400916FFE /* ThemesViewController.xib in Resources */,
+				A575FC0821A876F900DECDC7 /* PictureView.xib in Resources */,
+				A575FC1021A8808100DECDC7 /* PictureCell.xib in Resources */,
 				DEA1CDEF20929EE000916FFE /* ConversationsListViewController.xib in Resources */,
 				DEA1CDFB2092B9A800916FFE /* ProfileViewController.xib in Resources */,
 				DEA1CDE720928F9500916FFE /* ConversationViewController.xib in Resources */,
@@ -394,6 +499,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55887C014E8EBB6BADF49256 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TinkoffChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A566A0D421AAC67D005D0D9D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE89757C2042FDB100932176 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -401,23 +549,36 @@
 			files = (
 				DEA1CDD52092804900916FFE /* FRCService.swift in Sources */,
 				DEF6178F2063E09D00523C2B /* ThemesViewController.swift in Sources */,
+				A575FC2821A887DE00DECDC7 /* LoadParser.swift in Sources */,
+				A575FC2121A886A600DECDC7 /* RequestSender.swift in Sources */,
 				DEF617842061C90800523C2B /* MessageCell.swift in Sources */,
+				A575FC2621A8877500DECDC7 /* SearchParser.swift in Sources */,
 				DE804EC120757D8600C6EF26 /* Communicator.swift in Sources */,
 				DEC57094207DE6C400CB43F1 /* CoreDataStack.swift in Sources */,
 				DE8975862042FDB100932176 /* ProfileViewController.swift in Sources */,
+				A575FC1421A8838900DECDC7 /* Picture.swift in Sources */,
 				DEA1CDC520926F1300916FFE /* CoreDataManager.swift in Sources */,
 				DEA1CDC92092777400916FFE /* MessagesDataSource.swift in Sources */,
 				DEFD04772051C6E1000719BD /* ConversationViewController.swift in Sources */,
+				A575FC1921A8857600DECDC7 /* PictureServiceProtocols.swift in Sources */,
+				A575FC1E21A8865300DECDC7 /* NetworkingProtocols.swift in Sources */,
 				DE8975842042FDB100932176 /* AppDelegate.swift in Sources */,
+				A575FC0B21A878DD00DECDC7 /* PictureViewController.swift in Sources */,
+				A575FC1621A884FF00DECDC7 /* PictureModel.swift in Sources */,
 				DEFD0471205144DA000719BD /* ConversationsListViewController.swift in Sources */,
+				A575FC0F21A8808100DECDC7 /* PictureCell.swift in Sources */,
 				DEA1CDC320926DE500916FFE /* CoreAssembly.swift in Sources */,
 				DEA1CDF120929F8100916FFE /* ProfileModel.swift in Sources */,
+				A575FC2321A886D100DECDC7 /* RequestsFactory.swift in Sources */,
+				A575FC1B21A8859500DECDC7 /* PictureService.swift in Sources */,
 				DEA1CDDD209286BB00916FFE /* ConversationModel.swift in Sources */,
 				DEF617922063E16300523C2B /* Extensions.swift in Sources */,
 				DEA1CDD320927FC100916FFE /* ThemesService.swift in Sources */,
 				DEA1CDD92092843300916FFE /* PresentationAssembly.swift in Sources */,
 				DEA1CDD020927F1600916FFE /* ServicesAssembly.swift in Sources */,
 				DEA1CDC72092738D00916FFE /* ConversationsDataSource.swift in Sources */,
+				A575FC2A21A8880B00DECDC7 /* Requests.swift in Sources */,
+				A575FC1221A880F000DECDC7 /* PictureProtocol.swift in Sources */,
 				DEF6177C2061A9CC00523C2B /* ConversationCell.swift in Sources */,
 				DEA1CDF52092A75100916FFE /* ThemesModel.swift in Sources */,
 				DEA1CDCE20927E1C00916FFE /* RootAssembly.swift in Sources */,
@@ -556,6 +717,7 @@
 		};
 		DE8975932042FDB100932176 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -580,6 +742,7 @@
 		};
 		DE8975942042FDB100932176 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4DC4C488DEB6B35D5B5A702 /* Pods-TinkoffChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -16,20 +16,17 @@ protocol IThemesService: class {
 
 class ThemesService: IThemesService {
   private let themesManager: IThemesManager
-  
-  
+
   init(themesManager: IThemesManager) {
     self.themesManager = themesManager
   }
-  
-  
+
   func save(_ theme: UIColor) {
     themesManager.apply(theme, save: true)
   }
-  
-  
+
   func load() {
     themesManager.loadAndApply()
   }
-  
+
 }

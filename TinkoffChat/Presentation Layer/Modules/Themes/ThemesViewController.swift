@@ -10,26 +10,23 @@ import Foundation
 import UIKit
 
 class ThemesViewController: UIViewController {
-  
+
   private let model: IThemesModel
-  
-  
+
   init(model: IThemesModel) {
     self.model = model
     super.init(nibName: nil, bundle: nil)
   }
-  
-  
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     setupNavbar()
-    
+
     DispatchQueue.global(qos: .userInteractive).async {
       if let theme = UserDefaults.standard.colorForKey(key: "Theme") {
         DispatchQueue.main.async {
@@ -37,13 +34,13 @@ class ThemesViewController: UIViewController {
         }
       }
     }
-    
+
   }
-  
+
   @IBAction func changeThemeAction(_ sender: UIButton) {
-    
+
     if let titleOfButton = sender.titleLabel?.text {
-      
+
       switch titleOfButton {
       case "Light":
         model.closure(self, model.theme1)
@@ -55,13 +52,13 @@ class ThemesViewController: UIViewController {
         print(#function, ": Exception caught")
       }
     }
-    
+
   }
-  
+
   @objc private func closeVC() {
     dismiss(animated: true)
   }
-  
+
   private func setupNavbar() {
     navigationItem.title = "Themes"
     let leftItem = UIBarButtonItem(title: "Back",
@@ -70,5 +67,5 @@ class ThemesViewController: UIViewController {
                                     action: #selector(closeVC))
     navigationItem.setLeftBarButton(leftItem, animated: true)
   }
-  
+
 }
