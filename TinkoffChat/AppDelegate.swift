@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   private let rootAssembly = RootAssembly()
+  private var emitter: Emitter!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let controller = rootAssembly.presentationAssembly.conversationsListViewController()
     let navigationController = UINavigationController()
     navigationController.viewControllers = [controller]
-
+    emitter = Emitter(view: navigationController.view)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
 

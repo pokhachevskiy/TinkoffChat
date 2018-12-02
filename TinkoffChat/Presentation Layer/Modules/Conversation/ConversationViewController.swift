@@ -14,6 +14,7 @@ class ConversationViewController: UIViewController {
 
   init(model: ConversationModel) {
     self.model = model
+    titleLabelStub = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -29,6 +30,7 @@ class ConversationViewController: UIViewController {
   }
   @IBOutlet weak var inputTextField: UITextField!
   @IBOutlet weak var sendButton: UIButton!
+  private var titleLabelStub: UILabel!
   var sendButtonLocked = false
 
   @IBAction func sendButtonPressed() {
@@ -41,7 +43,11 @@ class ConversationViewController: UIViewController {
       model.communicationService.communicator.sendMessage(text: text, to: receiver) { [weak self] success, error in
         if success {
           self?.inputTextField.text = nil
-          self?.sendButtonLocked = true
+          if sendButtonLocked == false {
+            self?.sendButtonLocked = true
+
+            performAnimationSetButtonState(sendButton, enabled: false)
+          }
         } else {
           let alert = UIAlertController(title: "Error occured",
                                         message: error?.localizedDescription,
@@ -66,6 +72,12 @@ class ConversationViewController: UIViewController {
     tableView.delegate = self
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 300
+
+    navigationItem.titleView = titleLabelStub
+    titleLabelStub.textColor = UIColor.black
+    titleLabelStub.textAlignment = .center
+    titleLabelStub.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+    titleLabelStub.text = model.conversation.interlocutor?.name
 
     inputTextField.delegate = self
     inputTextField.autocorrectionType = UITextAutocorrectionType.no
@@ -101,10 +113,12 @@ class ConversationViewController: UIViewController {
                                            name: UIResponder.keyboardWillChangeFrameNotification,
                                            object: nil)
 
-    if  model.conversation.isOnline {
-      self.turnControlsOn()
+    model.setUserConnectionTracker(self)
+
+    if model.conversation.isOnline == false {
+      changeControlsState(enabled: false)
     } else {
-      self.turnControlsOff()
+      performAnimationSetLabelState(titleLabelStub, enabled: true)
     }
 
   }
@@ -168,23 +182,79 @@ class ConversationViewController: UIViewController {
   }
 
   // MARK: - sendButtonLock
-  @objc private func textFieldDidChange(_ textField: UITextField) {
-    if textField == inputTextField {
-      if let text = inputTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-        sendButtonLocked = false
-      } else {
-        sendButtonLocked = true
-      }
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        if textField == inputTextField {
+            if let text = inputTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+                if sendButtonLocked == true {
+                    sendButtonLocked = false
+                    performAnimationSetButtonState(sendButton, enabled: true)
+                }
+            } else {
+                if sendButtonLocked == false {
+                    sendButtonLocked = true
+
+                    performAnimationSetButtonState(sendButton, enabled: false)
+                }
+            }
+        }
     }
-  }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
 
-}
+  private func performAnimationSetButtonState(_ button: UIButton, enabled: Bool) {
+    if enabled {
+        // button state changed to "enabled"
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            button.backgroundColor = UIColor.green
+        })
 
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+                        button.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+        },
+                       completion: { _ in
+                        UIView.animate(withDuration: 0.5) {
+                            button.transform = CGAffineTransform.identity
+                        }
+        })
+
+    } else {
+        // button shutoff
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            button.backgroundColor = UIColor.red
+        })
+
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+                        button.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+        },
+                       completion: { _ in
+                        UIView.animate(withDuration: 0.5) {
+                            button.transform = CGAffineTransform.identity
+                        }
+        })
+    }
+  }
+
+  private func performAnimationSetLabelState(_ label: UILabel, enabled: Bool) {
+    if enabled {
+        // interlocutor is online
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            label.textColor = UIColor.green
+            label.transform = CGAffineTransform(scaleX: 1.10, y: 1.10)
+        })
+    } else {
+        // interlocutor is offline
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            label.textColor = UIColor.black
+            label.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+  }
+}
 // MARK: - UITableViewDataSource , UITableViewDelegate
 extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -273,22 +343,30 @@ extension ConversationViewController: UITextFieldDelegate {
 
 }
 
-// MARK: - ConversationViewControllerExtension
-extension ConversationViewController {
+extension ConversationViewController: IUserConnectionTracker {
 
-  func turnControlsOn() {
-    DispatchQueue.main.async {
-      self.textFieldDidChange(self.inputTextField)
-      self.inputTextField.isEnabled = true
-      self.sendButtonLocked = false
-    }
-  }
+    func changeControlsState(enabled: Bool) {
+        if enabled {
+            // set controls on
+            DispatchQueue.main.async {
+                self.textFieldDidChange(self.inputTextField)
+                self.inputTextField.isEnabled = true
 
-  func turnControlsOff() {
-    DispatchQueue.main.async {
-      self.sendButtonLocked = true
-      self.inputTextField.isEnabled = false
+                self.performAnimationSetLabelState(self.titleLabelStub, enabled: true)
+            }
+
+        } else {
+            // set controls off
+            DispatchQueue.main.async {
+                self.inputTextField.isEnabled = false
+                self.performAnimationSetLabelState(self.titleLabelStub, enabled: false)
+
+                if  self.sendButtonLocked == false {
+                    self.sendButtonLocked = true
+                    self.performAnimationSetButtonState(self.sendButton, enabled: false)
+                }
+            }
+        }
     }
-  }
 
 }

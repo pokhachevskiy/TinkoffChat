@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67FFCD6F21B4647000663AF1 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FFCD6E21B4647000663AF1 /* Emitter.swift */; };
 		A575FC0821A876F900DECDC7 /* PictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A575FC0721A876F900DECDC7 /* PictureView.xib */; };
 		A575FC0B21A878DD00DECDC7 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */; };
 		A575FC0F21A8808100DECDC7 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0D21A8808100DECDC7 /* PictureCell.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67FFCD6E21B4647000663AF1 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A575FC0721A876F900DECDC7 /* PictureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureView.xib; sourceTree = "<group>"; };
 		A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67FFCD6D21B4645000663AF1 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				67FFCD6E21B4647000663AF1 /* Emitter.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		A575FC0921A878AB00DECDC7 /* Pictures */ = {
@@ -264,6 +274,7 @@
 		DEA1CDB3209262ED00916FFE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				67FFCD6D21B4645000663AF1 /* Animation */,
 				A575FC0921A878AB00DECDC7 /* Pictures */,
 				DEA1CDE82092940600916FFE /* ConversationsList */,
 				DEA1CDDA2092860100916FFE /* Conversation */,
@@ -565,6 +576,7 @@
 				DE8975842042FDB100932176 /* AppDelegate.swift in Sources */,
 				A575FC0B21A878DD00DECDC7 /* PictureViewController.swift in Sources */,
 				A575FC1621A884FF00DECDC7 /* PictureModel.swift in Sources */,
+				67FFCD6F21B4647000663AF1 /* Emitter.swift in Sources */,
 				DEFD0471205144DA000719BD /* ConversationsListViewController.swift in Sources */,
 				A575FC0F21A8808100DECDC7 /* PictureCell.swift in Sources */,
 				DEA1CDC320926DE500916FFE /* CoreAssembly.swift in Sources */,

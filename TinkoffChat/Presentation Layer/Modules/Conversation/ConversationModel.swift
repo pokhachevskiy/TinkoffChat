@@ -39,4 +39,8 @@ class ConversationModel: IConversationModel {
     self.conversation = conversation
   }
 
+  func setUserConnectionTracker(_ tracker: IUserConnectionTracker) {
+    self.communicationService.connectionTracker = tracker
+  }
+
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
+  private var emitter: Emitter!
+
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var saveButton: UIButton!
 
@@ -100,6 +102,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
         let navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
+
+        self.emitter = Emitter(view: navigationController.view)
 
         self.present(navigationController, animated: true)
 
