@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67C604452256128C00D658F7 /* TinkoffChat.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 67C604442256128C00D658F7 /* TinkoffChat.xcworkspace */; };
 		67FFCD6F21B4647000663AF1 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FFCD6E21B4647000663AF1 /* Emitter.swift */; };
 		A575FC0821A876F900DECDC7 /* PictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A575FC0721A876F900DECDC7 /* PictureView.xib */; };
 		A575FC0B21A878DD00DECDC7 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0A21A878DD00DECDC7 /* PictureViewController.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67C604442256128C00D658F7 /* TinkoffChat.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = TinkoffChat.xcworkspace; sourceTree = "<group>"; };
 		67FFCD6E21B4647000663AF1 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A575FC0721A876F900DECDC7 /* PictureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureView.xib; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				DE8975822042FDB100932176 /* TinkoffChat */,
 				DE8975812042FDB100932176 /* Products */,
 				F32B3D99E29C8E4A0398A91D /* Pods */,
+				67C604442256128C00D658F7 /* TinkoffChat.xcworkspace */,
 				2FFE7CA0B4EA7CD02A24B1AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67C604452256128C00D658F7 /* TinkoffChat.xcworkspace in Resources */,
 				DE6AE853204855F400A567FD /* Images.xcassets in Resources */,
 				DEA1CDE520928E8C00916FFE /* IncomingMessageCell.xib in Resources */,
 				DE89758E2042FDB100932176 /* LaunchScreen.storyboard in Resources */,
