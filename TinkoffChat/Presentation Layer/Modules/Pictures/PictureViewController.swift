@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class PictureViewController: UIViewController {
-
     private let model: IPicturesModel
     weak var collectionPickerDelegate: IPicturesViewControllerDelegate?
 
@@ -23,7 +22,8 @@ class PictureViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -32,7 +32,7 @@ class PictureViewController: UIViewController {
         configureData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_: Bool) {
         super.viewWillAppear(true)
         configureCollectionView()
         configureNavigationPanel()
@@ -82,28 +82,29 @@ class PictureViewController: UIViewController {
 
         navigationItem.setLeftBarButton(leftItem, animated: true)
     }
-
 }
 
 // MARK: - UICollectionViewDataSource
-extension PictureViewController: UICollectionViewDataSource {
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension PictureViewController: UICollectionViewDataSource {
+    func numberOfSections(in _: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return model.data.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         let cell: PictureCell
 
         let identifier = "PictureCell"
 
         if let dequeuedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
-                                                                 for: indexPath) as? PictureCell {
+                                                                 for: indexPath) as? PictureCell
+        {
             cell = dequeuedCell
         } else {
             cell = PictureCell(frame: CGRect.zero)
@@ -118,7 +119,6 @@ extension PictureViewController: UICollectionViewDataSource {
                 DispatchQueue.main.async {
                     cell.setup(image: image, picture: picture)
                 }
-
             }
         }
 
@@ -126,9 +126,7 @@ extension PictureViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         if let cell = collectionView.cellForItem(at: indexPath) as? PictureCell {
-
             DispatchQueue.global(qos: .userInteractive).async {
                 guard let url = cell.fullUrl else {
                     self.showErrorMessage("Error loading image")
@@ -153,23 +151,19 @@ extension PictureViewController: UICollectionViewDataSource {
 
                         self.collectionPickerDelegate?.collectionPictureController(self, didFinishPickingImage: image)
                     }
-
                 }
-
             }
-
         }
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension PictureViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+    func collectionView(_: UICollectionView,
+                        layout _: UICollectionViewLayout,
+                        sizeForItemAt _: IndexPath) -> CGSize
+    {
         let screenRect = UIScreen.main.bounds
         let anotherOne = itemsPerRow + 1
 
@@ -179,25 +173,25 @@ extension PictureViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: floor(height), height: height)
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_: UICollectionView,
+                        layout _: UICollectionViewLayout,
+                        insetForSectionAt _: Int) -> UIEdgeInsets
+    {
         return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_: UICollectionView,
+                        layout _: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt _: Int) -> CGFloat
+    {
         return 10.0
     }
-
 }
 
 // MARK: - ICollectionPickerController
-extension PictureViewController: ICollectionPickerController {
 
+extension PictureViewController: ICollectionPickerController {
     @objc func close() {
         dismiss(animated: true)
     }
-
 }

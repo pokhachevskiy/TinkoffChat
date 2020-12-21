@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 protocol IPicturesService {
-
     func getPictures(completionHandler: @escaping ([Picture]?, String?) -> Void)
 
     func downloadPicture(urlString: String, completionHandler: @escaping (UIImage?, String?) -> Void)
-
 }

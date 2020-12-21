@@ -24,6 +24,7 @@
 		A575FC2621A8877500DECDC7 /* SearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2521A8877500DECDC7 /* SearchParser.swift */; };
 		A575FC2821A887DE00DECDC7 /* LoadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2721A887DE00DECDC7 /* LoadParser.swift */; };
 		A575FC2A21A8880B00DECDC7 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2921A8880B00DECDC7 /* Requests.swift */; };
+		B1CCD408839F156003C709BE /* Pods_TinkoffChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D71D5B50B37461624D04A1 /* Pods_TinkoffChat.framework */; };
 		DE6AE853204855F400A567FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6AE852204855F400A567FD /* Images.xcassets */; };
 		DE804EC120757D8600C6EF26 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE804EC020757D8600C6EF26 /* Communicator.swift */; };
 		DE8975842042FDB100932176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8975832042FDB100932176 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24D71D5B50B37461624D04A1 /* Pods_TinkoffChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C604442256128C00D658F7 /* TinkoffChat.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = TinkoffChat.xcworkspace; sourceTree = "<group>"; };
 		67FFCD6E21B4647000663AF1 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		811869AAFEA62722A3FDCD55 /* Pods-TinkoffChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CCD408839F156003C709BE /* Pods_TinkoffChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 		2FFE7CA0B4EA7CD02A24B1AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24D71D5B50B37461624D04A1 /* Pods_TinkoffChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -447,6 +451,7 @@
 				DE89757D2042FDB100932176 /* Frameworks */,
 				DE89757E2042FDB100932176 /* Resources */,
 				A566A0D421AAC67D005D0D9D /* SwiftLint */,
+				7A6E76242591388200F05D98 /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -536,6 +541,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7A6E76242591388200F05D98 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
 		};
 		A566A0D421AAC67D005D0D9D /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -752,7 +775,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "TinkoffChat/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -776,7 +799,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TinkoffChat/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -9,8 +9,7 @@
 import Foundation
 
 struct RequestsFactory {
-
-    struct PixabayRequests {
+    enum PixabayRequests {
         private static let apiKey = "10785734-6c5746ab423422440f7e56e00"
 
         static func searchImages() -> RequestConfig<SearchImagesParser> {
@@ -24,7 +23,5 @@ struct RequestsFactory {
             let parser = DownloadImageParser()
             return RequestConfig<DownloadImageParser>(request: request, parser: parser)
         }
-
     }
-
 }

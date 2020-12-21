@@ -17,7 +17,8 @@ class RequestSender: IRequestSender {
     let session = URLSession(configuration: URLSessionConfiguration.default)
 
     func send<Parser>(config: RequestConfig<Parser>,
-                      completionHandler: @escaping (Result<Parser.Model>) -> Void) where Parser: IParser {
+                      completionHandler: @escaping (Result<Parser.Model>) -> Void) where Parser: IParser
+    {
         guard let urlRequest = config.request.urlRequest else {
             completionHandler(.error("url string can't be parsed to URL"))
             return
@@ -30,9 +31,10 @@ class RequestSender: IRequestSender {
             }
 
             guard let data = data,
-                let parsedModel: Parser.Model = config.parser.parse(data: data) else {
-                    completionHandler(.error("received data can't be parsed"))
-                    return
+                  let parsedModel: Parser.Model = config.parser.parse(data: data)
+            else {
+                completionHandler(.error("received data can't be parsed"))
+                return
             }
 
             completionHandler(.success(parsedModel))
@@ -40,5 +42,4 @@ class RequestSender: IRequestSender {
 
         task.resume()
     }
-
 }

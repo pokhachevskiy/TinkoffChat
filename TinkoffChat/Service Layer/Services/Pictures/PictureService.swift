@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class PictureService: IPicturesService {
-
     private let requestSender: IRequestSender
 
     init(requestSender: IRequestSender) {
@@ -23,12 +22,11 @@ class PictureService: IPicturesService {
         requestSender.send(config: requestConfig) { (result: Result<[Picture]>) in
 
             switch result {
-            case .success(let pictures):
+            case let .success(pictures):
                 completionHandler(pictures, nil)
-            case .error(let error):
+            case let .error(error):
                 completionHandler(nil, error)
             }
-
         }
     }
 
@@ -38,13 +36,11 @@ class PictureService: IPicturesService {
         requestSender.send(config: requestConfig) { (result: Result<UIImage>) in
 
             switch result {
-            case .success(let picture):
+            case let .success(picture):
                 completionHandler(picture, nil)
-            case .error(let error):
+            case let .error(error):
                 completionHandler(nil, error)
             }
-
         }
     }
-
 }

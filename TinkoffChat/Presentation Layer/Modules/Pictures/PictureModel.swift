@@ -39,5 +39,4 @@ class PictureModel: IPicturesModel {
             completionHandler(image)
         }
     }
-
 }

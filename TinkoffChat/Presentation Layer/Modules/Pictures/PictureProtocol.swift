@@ -18,12 +18,12 @@ protocol IPicturesViewControllerDelegate: class {
 }
 
 protocol IPictureCellConfiguration {
-    var previewUrl: String? {get set}
-    var fullUrl: String? {get set}
+    var previewUrl: String? { get set }
+    var fullUrl: String? { get set }
 }
 
 protocol IPicturesModel: class {
-    var data: [Picture] {get set}
+    var data: [Picture] { get set }
 
     func fetchAllPictures(completionHandler: @escaping ([Picture]?, String?) -> Void)
     func fetchPicture(urlString: String, completionHandler: @escaping (UIImage?) -> Void)

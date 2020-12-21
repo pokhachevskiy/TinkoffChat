@@ -10,23 +10,22 @@ import Foundation
 import UIKit
 
 protocol IThemesService: class {
-  func save(_ theme: UIColor)
-  func load()
+    func save(_ theme: UIColor)
+    func load()
 }
 
 class ThemesService: IThemesService {
-  private let themesManager: IThemesManager
+    private let themesManager: IThemesManager
 
-  init(themesManager: IThemesManager) {
-    self.themesManager = themesManager
-  }
+    init(themesManager: IThemesManager) {
+        self.themesManager = themesManager
+    }
 
-  func save(_ theme: UIColor) {
-    themesManager.apply(theme, save: true)
-  }
+    func save(_ theme: UIColor) {
+        themesManager.apply(theme, save: true)
+    }
 
-  func load() {
-    themesManager.loadAndApply()
-  }
-
+    func load() {
+        themesManager.loadAndApply()
+    }
 }

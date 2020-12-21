@@ -35,7 +35,6 @@ class SearchImagesRequest: IRequest {
     init(key: String) {
         self.key = key
     }
-
 }
 
 class DownloadImageRequest: IRequest {
@@ -49,5 +48,4 @@ class DownloadImageRequest: IRequest {
     init(urlString: String) {
         self.urlString = urlString
     }
-
 }

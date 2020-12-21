@@ -19,5 +19,4 @@ class PictureCell: UICollectionViewCell, IPictureCellConfiguration {
         previewUrl = picture.previewUrl
         fullUrl = picture.fullUrl
     }
-
 }

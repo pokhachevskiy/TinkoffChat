@@ -10,62 +10,60 @@ import Foundation
 import UIKit
 
 protocol IPresentationAssembly {
-  func themesViewController(_ closure: @escaping ColorAlias) -> ThemesViewController
+    func themesViewController(_ closure: @escaping ColorAlias) -> ThemesViewController
 
-  func profileViewController() -> ProfileViewController
+    func profileViewController() -> ProfileViewController
 
-  func conversationsListViewController() -> ConversationsListViewController
+    func conversationsListViewController() -> ConversationsListViewController
 
-  func conversationViewController(model: ConversationModel) -> ConversationViewController
+    func conversationViewController(model: ConversationModel) -> ConversationViewController
 
-  func picturesViewController() -> PictureViewController
+    func picturesViewController() -> PictureViewController
 }
 
 class PresentationAssembly: IPresentationAssembly {
+    private let serviceAssembly: IServicesAssembly
 
-  private let serviceAssembly: IServicesAssembly
+    init(serviceAssembly: IServicesAssembly) {
+        self.serviceAssembly = serviceAssembly
+    }
 
-  init(serviceAssembly: IServicesAssembly) {
-    self.serviceAssembly = serviceAssembly
-  }
+    func themesViewController(_ closure: @escaping ColorAlias) -> ThemesViewController {
+        return ThemesViewController(model: themesModel(closure))
+    }
 
-  func themesViewController(_ closure: @escaping ColorAlias) -> ThemesViewController {
-    return ThemesViewController(model: themesModel(closure))
-  }
+    private func themesModel(_ closure: @escaping ColorAlias) -> IThemesModel {
+        return ThemesModel(theme1: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), theme2: #colorLiteral(red: 0.2941176471, green: 0.2941176471, blue: 0.294, alpha: 1), theme3: #colorLiteral(red: 0.773, green: 0.702, blue: 0.345, alpha: 1), closure: closure)
+    }
 
-  private func themesModel(_ closure: @escaping ColorAlias) -> IThemesModel {
-    return ThemesModel(theme1: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), theme2: #colorLiteral(red: 0.2941176471, green: 0.2941176471, blue: 0.294, alpha: 1), theme3: #colorLiteral(red: 0.773, green: 0.702, blue: 0.345, alpha: 1), closure: closure)
-  }
+    func profileViewController() -> ProfileViewController {
+        return ProfileViewController(model: profileModel(), presentationAssembly: self)
+    }
 
-  func profileViewController() -> ProfileViewController {
-    return ProfileViewController(model: profileModel(), presentationAssembly: self)
-  }
+    func picturesViewController() -> PictureViewController {
+        return PictureViewController(model: picturesModel())
+    }
 
-  func picturesViewController() -> PictureViewController {
-    return PictureViewController(model: picturesModel())
-  }
+    private func picturesModel() -> IPicturesModel {
+        return PictureModel(picturesService: serviceAssembly.picturesService)
+    }
 
-  private func picturesModel() -> IPicturesModel {
-    return PictureModel(picturesService: serviceAssembly.picturesService)
-  }
+    private func profileModel() -> IAppUserModel {
+        return ProfileModel(dataService: CoreDataManager())
+    }
 
-  private func profileModel() -> IAppUserModel {
-    return ProfileModel(dataService: CoreDataManager())
-  }
+    func conversationViewController(model: ConversationModel) -> ConversationViewController {
+        return ConversationViewController(model: model)
+    }
 
-  func conversationViewController(model: ConversationModel) -> ConversationViewController {
-    return ConversationViewController(model: model)
-  }
+    func conversationsListViewController() -> ConversationsListViewController {
+        return ConversationsListViewController(model: conversationsListModel(),
+                                               presentationAssembly: self)
+    }
 
-  func conversationsListViewController() -> ConversationsListViewController {
-    return ConversationsListViewController(model: conversationsListModel(),
-                                           presentationAssembly: self)
-  }
-
-  private func conversationsListModel() -> IConversationListModel {
-    return ConversationsListModel(communicationService: serviceAssembly.communicationService,
-                                  themesService: serviceAssembly.themesService,
-                                  frcService: serviceAssembly.frcService)
-  }
-
+    private func conversationsListModel() -> IConversationListModel {
+        return ConversationsListModel(communicationService: serviceAssembly.communicationService,
+                                      themesService: serviceAssembly.themesService,
+                                      frcService: serviceAssembly.frcService)
+    }
 }
