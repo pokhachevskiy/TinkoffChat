@@ -11,7 +11,7 @@ import UIKit
 
 typealias ColorAlias = ((ThemesViewController, UIColor?) -> Void)
 
-protocol IThemesModel: class {
+protocol IThemesModel: AnyObject {
     var theme1: UIColor { get }
     var theme2: UIColor { get }
     var theme3: UIColor { get }

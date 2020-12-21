@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol IThemesService: class {
+protocol IThemesService: AnyObject {
     func save(_ theme: UIColor)
     func load()
 }

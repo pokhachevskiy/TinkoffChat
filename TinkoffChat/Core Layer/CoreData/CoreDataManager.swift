@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 import UIKit
 
-protocol IDataManager: class {
+protocol IDataManager: AnyObject {
     func appendMessage(text: String, conversationId: String, isIncoming: Bool)
     func appendConversation(id: String, userName: String)
     func makeConversationOffline(id: String)
@@ -19,7 +19,7 @@ protocol IDataManager: class {
     func saveAppUser(_ profile: IAppUser, completion: @escaping (Bool) -> Void)
 }
 
-protocol ICoreDataStack: class {
+protocol ICoreDataStack: AnyObject {
     var saveContext: NSManagedObjectContext { get }
     func fetchRequest<T>(_ fetchRequestName: String,
                          substitutionDictionary: [String: Any]?,

@@ -26,7 +26,9 @@ class ThemesManager: IThemesManager {
                 UINavigationBar.appearance().backgroundColor = theme
                 UINavigationBar.appearance().barTintColor = theme
                 UINavigationBar.appearance().tintColor = UIColor.black
-                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+                UINavigationBar.appearance().titleTextAttributes = [
+                    NSAttributedString.Key.foregroundColor: UIColor.black,
+                ]
 
                 let windows = UIApplication.shared.windows as [UIWindow]
                 for window in windows {

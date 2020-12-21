@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ICommunicatorDelegate: class {
+protocol ICommunicatorDelegate: AnyObject {
     var communicator: ICommunicator { get }
     var connectionTracker: IUserConnectionTracker? { get set }
 
@@ -69,7 +69,8 @@ class CommunicationService: ICommunicatorDelegate {
 
     func failedToStartBrowsingForUsers(error: Error) {
         print("Failed To Start Browsing For Users:", error.localizedDescription)
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription,
+                                                preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Done", style: .cancel))
         alertController.present(alertController, animated: true, completion: nil)
     }

@@ -450,8 +450,8 @@
 				DE89757C2042FDB100932176 /* Sources */,
 				DE89757D2042FDB100932176 /* Frameworks */,
 				DE89757E2042FDB100932176 /* Resources */,
-				A566A0D421AAC67D005D0D9D /* SwiftLint */,
 				7A6E76242591388200F05D98 /* SwiftFormat */,
+				A566A0D421AAC67D005D0D9D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -576,7 +576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

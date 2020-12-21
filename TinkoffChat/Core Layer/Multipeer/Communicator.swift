@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-protocol ICommunicator: class {
+protocol ICommunicator: AnyObject {
     func sendMessage(text: String, to userId: String, completionHandler: (_ success: Bool, _ error: Error?) -> Void)
     var delegate: ICommunicatorDelegate? { get set }
     var online: Bool { get set }

@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-protocol IConversationModel: class {
+protocol IConversationModel: AnyObject {
     var communicationService: ICommunicatorDelegate { get set }
 
     var conversation: Conversation { get set }

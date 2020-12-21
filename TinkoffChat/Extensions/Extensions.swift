@@ -41,7 +41,7 @@ extension UIButton {
     }
 }
 
-protocol IDataProviderDelegate: class {
+protocol IDataProviderDelegate: AnyObject {
     func beginUpdates()
     func endUpdates()
 

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol IConversationListModel: class {
+protocol IConversationListModel: AnyObject {
     var communicationService: ICommunicatorDelegate { get }
     var frcService: IFRCService { get }
     var dataSourcer: ConversationsDataSource? { get set }

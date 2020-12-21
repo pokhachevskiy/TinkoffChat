@@ -79,7 +79,7 @@ extension MessagesDataSource: NSFetchedResultsControllerDelegate {
     }
 }
 
-protocol IDataSourceDelegate: class {
+protocol IDataSourceDelegate: AnyObject {
     func beginUpdates()
     func endUpdates()
 

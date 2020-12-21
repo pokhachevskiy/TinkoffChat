@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-protocol IFRCService: class {
+protocol IFRCService: AnyObject {
     func allConversations() -> NSFetchRequest<Conversation>?
     func messagesInConversation(with id: String) -> NSFetchRequest<Message>?
 

@@ -2,3 +2,6 @@ disabled_rules: # rule identifiers to exclude from running
  - identifier_name
  - implicit_getter
  - file_length
+ - opening_brace
+ - trailing_comma
+ - line_length

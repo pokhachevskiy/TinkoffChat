@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-protocol ICollectionPickerController: class {
+protocol ICollectionPickerController: AnyObject {
     func close()
 }
 
-protocol IPicturesViewControllerDelegate: class {
+protocol IPicturesViewControllerDelegate: AnyObject {
     func collectionPictureController(_ picker: ICollectionPickerController, didFinishPickingImage image: UIImage)
 }
 
@@ -22,7 +22,7 @@ protocol IPictureCellConfiguration {
     var fullUrl: String? { get set }
 }
 
-protocol IPicturesModel: class {
+protocol IPicturesModel: AnyObject {
     var data: [Picture] { get set }
 
     func fetchAllPictures(completionHandler: @escaping ([Picture]?, String?) -> Void)
