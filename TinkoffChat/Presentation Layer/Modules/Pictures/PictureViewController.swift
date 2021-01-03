@@ -111,13 +111,16 @@ extension PictureViewController: UICollectionViewDataSource {
         }
 
         let picture = model.data[indexPath.item]
+        cell.fullUrl = picture.fullUrl
 
         DispatchQueue.global(qos: .userInteractive).async {
-            self.model.fetchPicture(urlString: picture.previewUrl) { image in
+            self.model.fetchPicture(urlString: picture.fullUrl) { image in
                 guard let image = image else { return }
 
                 DispatchQueue.main.async {
-                    cell.setup(image: image, picture: picture)
+                    if cell.fullUrl == picture.fullUrl {
+                        cell.setup(image: image, picture: picture)
+                    }
                 }
             }
         }

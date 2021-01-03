@@ -19,4 +19,10 @@ class PictureCell: UICollectionViewCell, IPictureCellConfiguration {
         previewUrl = picture.previewUrl
         fullUrl = picture.fullUrl
     }
+
+    override func prepareForReuse() {
+        imageView.image = nil
+        previewUrl = nil
+        fullUrl = nil
+    }
 }
